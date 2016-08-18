@@ -15,6 +15,7 @@
 */
 
 #include "spirv_hlsl.hpp"
+#include "GLSL.std.450.h"
 #include <algorithm>
 
 using namespace spv;
@@ -137,7 +138,10 @@ void CompilerHLSL::emit_header()
 	for (auto &header : header_lines)
 		statement(header);
 
-	statement("");
+	if (header_lines.size() > 0)
+	{
+		statement("");
+	}
 }
 
 void CompilerHLSL::emit_interface_block_globally(const SPIRVariable &var)
@@ -294,7 +298,6 @@ void CompilerHLSL::emit_resources()
 	for (auto var : variables)
 	{
 		emit_interface_block_in_struct(*var, binding_number);
-		emitted = true;
 	}
 	end_scope_decl();
 	statement("");
@@ -328,7 +331,6 @@ void CompilerHLSL::emit_resources()
 	for (auto var : variables)
 	{
 		emit_interface_block_in_struct(*var, binding_number);
-		emitted = true;
 	}
 	end_scope_decl();
 	statement("");
@@ -347,6 +349,15 @@ void CompilerHLSL::emit_resources()
 
 	if (emitted)
 		statement("");
+
+	if (requires_op_fmod)
+	{
+		statement("float mod(float x, float y)");
+		begin_scope();
+		statement("return x - y * floor(x / y);");
+		end_scope();
+		statement("");
+	}
 }
 
 void CompilerHLSL::emit_function_prototype(SPIRFunction &func, uint64_t return_flags)
@@ -752,6 +763,65 @@ void CompilerHLSL::emit_binary_func_op_transpose_first(uint32_t result_type, uin
 	}
 }
 
+void CompilerHLSL::emit_binary_func_op_transpose_second(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1,
+	const char *op)
+{
+	bool forward = should_forward(op0) && should_forward(op1);
+	emit_op(result_type, result_id, join(op, "(", to_expression(op0), ", transpose(", to_expression(op1), "))"), forward, false);
+
+	if (forward && forced_temporaries.find(result_id) == end(forced_temporaries))
+	{
+		inherit_expression_dependencies(result_id, op0);
+		inherit_expression_dependencies(result_id, op1);
+	}
+}
+
+void CompilerHLSL::emit_binary_func_op_transpose_all(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1,
+	const char *op)
+{
+	bool forward = should_forward(op0) && should_forward(op1);
+	emit_op(result_type, result_id, join("transpose(", op, "(transpose(", to_expression(op0), "), transpose(", to_expression(op1), ")))"), forward, false);
+
+	if (forward && forced_temporaries.find(result_id) == end(forced_temporaries))
+	{
+		inherit_expression_dependencies(result_id, op0);
+		inherit_expression_dependencies(result_id, op1);
+	}
+}
+
+void CompilerHLSL::emit_glsl_op(uint32_t result_type, uint32_t id, uint32_t eop, const uint32_t *args, uint32_t count)
+{
+	GLSLstd450 op = static_cast<GLSLstd450>(eop);
+
+	switch (op)
+	{
+	case GLSLstd450InverseSqrt:
+	{
+		emit_unary_func_op(result_type, id, args[0], "rsqrt");
+		break;
+	}
+	case GLSLstd450Fract:
+	{
+		emit_unary_func_op(result_type, id, args[0], "frac");
+		break;
+	}
+	case GLSLstd450FMix:
+	case GLSLstd450IMix:
+	{
+		emit_trinary_func_op(result_type, id, args[0], args[1], args[2], "lerp");
+		break;
+	}
+	case GLSLstd450Atan2:
+	{
+		emit_binary_func_op(result_type, id, args[1], args[0], "atan2");
+		break;
+	}
+	default:
+		CompilerGLSL::emit_glsl_op(result_type, id, eop, args, count);
+		break;
+	}
+}
+
 void CompilerHLSL::emit_instruction(const Instruction &instruction)
 {
 	auto ops = stream(instruction);
@@ -775,12 +845,22 @@ void CompilerHLSL::emit_instruction(const Instruction &instruction)
 		emit_binary_func_op_transpose_first(ops[0], ops[1], ops[2], ops[3], "mul");
 		break;
 	}
-
-	// TODO: Take care of remaining matrix binops
-	//case OpMatrixTimesScalar:
-	//case OpVectorTimesMatrix:
-	//case OpMatrixTimesMatrix:
-	
+	case OpVectorTimesMatrix:
+	{
+		emit_binary_func_op_transpose_second(ops[0], ops[1], ops[2], ops[3], "mul");
+		break;
+	}
+	case OpMatrixTimesMatrix:
+	{
+		emit_binary_func_op_transpose_all(ops[0], ops[1], ops[2], ops[3], "mul");
+		break;
+	}
+	case OpFMod:
+	{
+		requires_op_fmod = true;
+		CompilerGLSL::emit_instruction(instruction);
+		break;
+	}
 	default:
 		CompilerGLSL::emit_instruction(instruction);
 		break;
