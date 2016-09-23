@@ -31,8 +31,6 @@ CompilerMSL::CompilerMSL(vector<uint32_t> spirv_)
 string CompilerMSL::compile(MSLConfiguration &msl_cfg, vector<MSLVertexAttr> *p_vtx_attrs,
                             std::vector<MSLResourceBinding> *p_res_bindings)
 {
-	next_metal_resource_index = MSLResourceBinding(); // Start bindings at zero
-
 	pad_type_ids_by_pad_len.clear();
 
 	msl_config = msl_cfg;
@@ -48,7 +46,7 @@ string CompilerMSL::compile(MSLConfiguration &msl_cfg, vector<MSLVertexAttr> *p_
 	resource_bindings.clear();
 	if (p_res_bindings)
 	{
-		resource_bindings.reserve(p_vtx_attrs->size());
+		resource_bindings.reserve(p_res_bindings->size());
 		for (auto &rb : *p_res_bindings)
 		{
 			rb.used_by_shader = false;
@@ -77,6 +75,8 @@ string CompilerMSL::compile(MSLConfiguration &msl_cfg, vector<MSLVertexAttr> *p_
 			throw CompilerError("Over 3 compilation loops detected. Must be a bug!");
 
 		reset();
+
+		next_metal_resource_index = MSLResourceBinding(); // Start bindings at zero
 
 		// Move constructor for this type is broken on GCC 4.9 ...
 		buffer = unique_ptr<ostringstream>(new ostringstream());
@@ -184,7 +184,7 @@ void CompilerMSL::bind_vertex_attributes(std::set<uint32_t> &bindings)
 				auto &type = get<SPIRType>(var.basetype);
 
 				if (var.storage == StorageClassInput && interface_variable_exists_in_entry_point(var.self) &&
-				    (!is_builtin_variable(var)) && !var.remapped_variable && type.pointer)
+				    !is_hidden_variable(var) && type.pointer)
 				{
 					auto &dec = meta[var.self].decoration;
 					MSLVertexAttr *p_va = vtx_attrs_by_location[dec.location];
@@ -226,8 +226,8 @@ uint32_t CompilerMSL::add_interface_struct(StorageClass storage, uint32_t vtx_bi
 			auto &dec = meta[var.self].decoration;
 
 			if (var.storage == storage && interface_variable_exists_in_entry_point(var.self) &&
-			    (!is_builtin_variable(var) || incl_builtins) && (!match_binding || (vtx_binding == dec.binding)) &&
-			    !var.remapped_variable && type.pointer)
+			    !is_hidden_variable(var, incl_builtins) && (!match_binding || (vtx_binding == dec.binding)) &&
+			    type.pointer)
 			{
 				vars.push_back(&var);
 			}
@@ -390,6 +390,9 @@ uint32_t CompilerMSL::add_interface_struct(StorageClass storage, uint32_t vtx_bi
 // Emits the file header info
 void CompilerMSL::emit_header()
 {
+	for (auto &header : header_lines)
+		statement(header);
+
 	statement("#include <metal_stdlib>");
 	statement("#include <simd/simd.h>");
 	statement("");
@@ -427,8 +430,8 @@ void CompilerMSL::emit_resources()
 			if (var.storage != StorageClassFunction && type.pointer &&
 			    (type.storage == StorageClassUniform || type.storage == StorageClassUniformConstant ||
 			     type.storage == StorageClassPushConstant) &&
-			    !is_builtin_variable(var) && (meta[type.self].decoration.decoration_flags &
-			                                  ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
+			    !is_hidden_variable(var) && (meta[type.self].decoration.decoration_flags &
+			                                 ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
 			{
 				emit_struct(type);
 			}
@@ -1094,6 +1097,9 @@ string CompilerMSL::entry_point_args(bool append_comma)
 		{
 			auto &var = id.get<SPIRVariable>();
 			auto &type = get<SPIRType>(var.basetype);
+
+			if (is_hidden_variable(var, true))
+				continue;
 
 			if (var.storage == StorageClassUniform || var.storage == StorageClassUniformConstant ||
 			    var.storage == StorageClassPushConstant)

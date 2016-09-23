@@ -51,10 +51,15 @@ void CompilerCPP::emit_interface_block(const SPIRVariable &var)
 	auto instance_name = to_name(var.self);
 	uint32_t location = meta[var.self].decoration.location;
 
+	string buffer_name;
 	auto flags = meta[type.self].decoration.decoration_flags;
 	if (flags & (1ull << DecorationBlock))
+	{
 		emit_block_struct(type);
-	auto buffer_name = to_name(type.self);
+		buffer_name = to_name(type.self);
+	}
+	else
+		buffer_name = type_to_glsl(type);
 
 	statement("internal::", qual, "<", buffer_name, type_to_array_glsl(type), "> ", instance_name, "__;");
 	statement_no_indent("#define ", instance_name, " __res->", instance_name, "__.get()");
@@ -82,18 +87,20 @@ void CompilerCPP::emit_uniform(const SPIRVariable &var)
 	uint32_t binding = meta[var.self].decoration.binding;
 	uint32_t location = meta[var.self].decoration.location;
 
+	string type_name = type_to_glsl(type);
+	remap_variable_type_name(type, instance_name, type_name);
+
 	if (type.basetype == SPIRType::Image || type.basetype == SPIRType::SampledImage ||
 	    type.basetype == SPIRType::AtomicCounter)
 	{
-		statement("internal::Resource<", type_to_glsl(type), type_to_array_glsl(type), "> ", instance_name, "__;");
+		statement("internal::Resource<", type_name, type_to_array_glsl(type), "> ", instance_name, "__;");
 		statement_no_indent("#define ", instance_name, " __res->", instance_name, "__.get()");
 		resource_registrations.push_back(
 		    join("s.register_resource(", instance_name, "__", ", ", descriptor_set, ", ", binding, ");"));
 	}
 	else
 	{
-		statement("internal::UniformConstant<", type_to_glsl(type), type_to_array_glsl(type), "> ", instance_name,
-		          "__;");
+		statement("internal::UniformConstant<", type_name, type_to_array_glsl(type), "> ", instance_name, "__;");
 		statement_no_indent("#define ", instance_name, " __res->", instance_name, "__.get()");
 		resource_registrations.push_back(
 		    join("s.register_uniform_constant(", instance_name, "__", ", ", location, ");"));
@@ -164,8 +171,8 @@ void CompilerCPP::emit_resources()
 			auto &type = get<SPIRType>(var.basetype);
 
 			if (var.storage != StorageClassFunction && type.pointer && type.storage == StorageClassUniform &&
-			    !is_builtin_variable(var) && (meta[type.self].decoration.decoration_flags &
-			                                  ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
+			    !is_hidden_variable(var) && (meta[type.self].decoration.decoration_flags &
+			                                 ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
 			{
 				emit_buffer_block(var);
 			}
@@ -179,8 +186,11 @@ void CompilerCPP::emit_resources()
 		{
 			auto &var = id.get<SPIRVariable>();
 			auto &type = get<SPIRType>(var.basetype);
-			if (var.storage != StorageClassFunction && type.pointer && type.storage == StorageClassPushConstant)
+			if (!is_hidden_variable(var) && var.storage != StorageClassFunction && type.pointer &&
+			    type.storage == StorageClassPushConstant)
+			{
 				emit_push_constant_block(var);
+			}
 		}
 	}
 
@@ -192,8 +202,8 @@ void CompilerCPP::emit_resources()
 			auto &var = id.get<SPIRVariable>();
 			auto &type = get<SPIRType>(var.basetype);
 
-			if (var.storage != StorageClassFunction && !is_builtin_variable(var) && !var.remapped_variable &&
-			    type.pointer && (var.storage == StorageClassInput || var.storage == StorageClassOutput) &&
+			if (var.storage != StorageClassFunction && !is_hidden_variable(var) && type.pointer &&
+			    (var.storage == StorageClassInput || var.storage == StorageClassOutput) &&
 			    interface_variable_exists_in_entry_point(var.self))
 			{
 				emit_interface_block(var);
@@ -209,8 +219,7 @@ void CompilerCPP::emit_resources()
 			auto &var = id.get<SPIRVariable>();
 			auto &type = get<SPIRType>(var.basetype);
 
-			if (var.storage != StorageClassFunction && !is_builtin_variable(var) && !var.remapped_variable &&
-			    type.pointer &&
+			if (var.storage != StorageClassFunction && !is_hidden_variable(var) && type.pointer &&
 			    (type.storage == StorageClassUniformConstant || type.storage == StorageClassAtomicCounter))
 			{
 				emit_uniform(var);
@@ -398,15 +407,19 @@ string CompilerCPP::argument_decl(const SPIRFunction::Parameter &arg)
 	auto &var = get<SPIRVariable>(arg.id);
 
 	string base = type_to_glsl(type);
+	string variable_name = to_name(var.self);
+	remap_variable_type_name(type, variable_name, base);
+
 	for (auto &array : type.array)
 		base = join("std::array<", base, ", ", array, ">");
 
-	return join(constref ? "const " : "", base, " &", to_name(var.self));
+	return join(constref ? "const " : "", base, " &", variable_name);
 }
 
 string CompilerCPP::variable_decl(const SPIRType &type, const string &name)
 {
 	string base = type_to_glsl(type);
+	remap_variable_type_name(type, name, base);
 	bool runtime = false;
 	for (auto &array : type.array)
 	{

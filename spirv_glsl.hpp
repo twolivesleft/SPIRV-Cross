@@ -291,6 +291,8 @@ protected:
 	std::string layout_for_member(const SPIRType &type, uint32_t index);
 	uint64_t combined_decoration_for_member(const SPIRType &type, uint32_t index);
 	std::string layout_for_variable(const SPIRVariable &variable);
+	std::string to_combined_image_sampler(uint32_t image_id, uint32_t samp_id);
+	bool skip_argument(uint32_t id) const;
 
 	bool ssbo_is_std430_packing(const SPIRType &type);
 	uint32_t type_to_std430_base_size(const SPIRType &type);
@@ -333,6 +335,16 @@ protected:
 	inline bool is_legacy() const
 	{
 		return (options.es && options.version < 300) || (!options.es && options.version < 130);
+	}
+
+	inline bool is_legacy_es() const
+	{
+		return options.es && options.version < 300;
+	}
+
+	inline bool is_legacy_desktop() const
+	{
+		return !options.es && options.version < 130;
 	}
 
 	bool args_will_forward(uint32_t id, const uint32_t *args, uint32_t num_args, bool pure);

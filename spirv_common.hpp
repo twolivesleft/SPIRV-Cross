@@ -17,6 +17,7 @@
 #ifndef SPIRV_COMMON_HPP
 #define SPIRV_COMMON_HPP
 
+#include <functional>
 #include <sstream>
 #include <stdio.h>
 #include <string.h>
@@ -255,7 +256,7 @@ struct SPIREntryPoint
 	} workgroup_size;
 	uint32_t invocations = 0;
 	uint32_t output_vertices = 0;
-	spv::ExecutionModel model = {};
+	spv::ExecutionModel model;
 };
 
 struct SPIRExpression : IVariant
@@ -439,12 +440,34 @@ struct SPIRFunction : IVariant
 		uint32_t write_count;
 	};
 
+	// When calling a function, and we're remapping separate image samplers,
+	// resolve these arguments into combined image samplers and pass them
+	// as additional arguments in this order.
+	// It gets more complicated as functions can pull in their own globals
+	// and combine them with parameters,
+	// so we need to distinguish if something is local parameter index
+	// or a global ID.
+	struct CombinedImageSamplerParameter
+	{
+		uint32_t id;
+		uint32_t image_id;
+		uint32_t sampler_id;
+		bool global_image;
+		bool global_sampler;
+	};
+
 	uint32_t return_type;
 	uint32_t function_type;
 	std::vector<Parameter> arguments;
+
+	// Can be used by backends to add magic arguments.
+	// Currently used by combined image/sampler implementation.
+
+	std::vector<Parameter> shadow_arguments;
 	std::vector<uint32_t> local_variables;
 	uint32_t entry_block = 0;
 	std::vector<uint32_t> blocks;
+	std::vector<CombinedImageSamplerParameter> combined_parameters;
 
 	void add_local_variable(uint32_t id)
 	{
@@ -459,6 +482,7 @@ struct SPIRFunction : IVariant
 
 	bool active = false;
 	bool flush_undeclared = true;
+	bool do_combined_parameters = true;
 };
 
 struct SPIRVariable : IVariant
@@ -810,6 +834,12 @@ struct Meta
 	std::vector<Decoration> members;
 	uint32_t sampler = 0;
 };
+
+// A user callback that remaps the type of any variable.
+// var_name is the declared name of the variable.
+// name_of_type is the textual name of the type which will be used in the code unless written to by the callback.
+using VariableTypeRemapCallback =
+    std::function<void(const SPIRType &type, const std::string &var_name, std::string &name_of_type)>;
 }
 
 #endif
