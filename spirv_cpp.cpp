@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 ARM Limited
+ * Copyright 2015-2017 ARM Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -116,8 +116,8 @@ void CompilerCPP::emit_push_constant_block(const SPIRVariable &var)
 	auto &type = get<SPIRType>(var.basetype);
 	auto &flags = meta[var.self].decoration.decoration_flags;
 	if ((flags & (1ull << DecorationBinding)) || (flags & (1ull << DecorationDescriptorSet)))
-		throw CompilerError("Push constant blocks cannot be compiled to GLSL with Binding or Set syntax. "
-		                    "Remap to location with reflection API first or disable these decorations.");
+		SPIRV_CROSS_THROW("Push constant blocks cannot be compiled to GLSL with Binding or Set syntax. "
+		                  "Remap to location with reflection API first or disable these decorations.");
 
 	emit_block_struct(type);
 	auto buffer_name = to_name(type.self);
@@ -279,6 +279,9 @@ void CompilerCPP::emit_resources()
 
 string CompilerCPP::compile()
 {
+	// Force a classic "C" locale, reverts when function returns
+	ClassicLocale classic_locale;
+
 	// Do not deal with ES-isms like precision, older extensions and such.
 	options.es = false;
 	options.version = 450;
@@ -298,7 +301,7 @@ string CompilerCPP::compile()
 	do
 	{
 		if (pass_count >= 3)
-			throw CompilerError("Over 3 compilation loops detected. Must be a bug!");
+			SPIRV_CROSS_THROW("Over 3 compilation loops detected. Must be a bug!");
 
 		resource_registrations.clear();
 		reset();
@@ -410,8 +413,8 @@ string CompilerCPP::argument_decl(const SPIRFunction::Parameter &arg)
 	string variable_name = to_name(var.self);
 	remap_variable_type_name(type, variable_name, base);
 
-	for (auto &array : type.array)
-		base = join("std::array<", base, ", ", array, ">");
+	for (uint32_t i = 0; i < type.array.size(); i++)
+		base = join("std::array<", base, ", ", to_array_size(type, i), ">");
 
 	return join(constref ? "const " : "", base, " &", variable_name);
 }
@@ -421,16 +424,18 @@ string CompilerCPP::variable_decl(const SPIRType &type, const string &name)
 	string base = type_to_glsl(type);
 	remap_variable_type_name(type, name, base);
 	bool runtime = false;
-	for (auto &array : type.array)
+
+	for (uint32_t i = 0; i < type.array.size(); i++)
 	{
-		if (array)
-			base = join("std::array<", base, ", ", array, ">");
-		else
+		auto &array = type.array[i];
+		if (!array && type.array_size_literal[i])
 		{
 			// Avoid using runtime arrays with std::array since this is undefined.
 			// Runtime arrays cannot be passed around as values, so this is fine.
 			runtime = true;
 		}
+		else
+			base = join("std::array<", base, ", ", to_array_size(type, i), ">");
 	}
 	base += ' ';
 	return base + name + (runtime ? "[1]" : "");
@@ -467,7 +472,7 @@ void CompilerCPP::emit_header()
 		break;
 
 	default:
-		throw CompilerError("Unsupported execution model.");
+		SPIRV_CROSS_THROW("Unsupported execution model.");
 	}
 
 	switch (execution.model)
@@ -504,6 +509,6 @@ void CompilerCPP::emit_header()
 		break;
 
 	default:
-		throw CompilerError("Unsupported execution model.");
+		SPIRV_CROSS_THROW("Unsupported execution model.");
 	}
 }

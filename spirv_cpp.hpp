@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 ARM Limited
+ * Copyright 2015-2017 ARM Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef SPIRV_CPP_HPP
-#define SPIRV_CPP_HPP
+#ifndef SPIRV_CROSS_CPP_HPP
+#define SPIRV_CROSS_CPP_HPP
 
 #include "spirv_glsl.hpp"
 #include <utility>
