@@ -161,7 +161,8 @@ protected:
 	virtual void emit_texture_op(const Instruction &i);
 	virtual std::string type_to_glsl(const SPIRType &type);
 	virtual std::string builtin_to_glsl(spv::BuiltIn builtin);
-	virtual std::string member_decl(const SPIRType &type, const SPIRType &member_type, uint32_t member);
+	virtual void emit_struct_member(const SPIRType &type, uint32_t member_type_id, uint32_t index,
+	                                const std::string &qualifier = "");
 	virtual std::string image_type_glsl(const SPIRType &type);
 	virtual std::string constant_expression(const SPIRConstant &c);
 	std::string constant_op_expression(const SPIRConstantOp &cop);
@@ -171,7 +172,7 @@ protected:
 	virtual std::string to_func_call_arg(uint32_t id);
 	virtual std::string to_function_name(uint32_t img, const SPIRType &imgtype, bool is_fetch, bool is_gather,
 	                                     bool is_proj, bool has_array_offsets, bool has_offset, bool has_grad,
-	                                     bool has_lod, bool has_dref);
+	                                     bool has_dref, uint32_t lod);
 	virtual std::string to_function_args(uint32_t img, const SPIRType &imgtype, bool is_fetch, bool is_gather,
 	                                     bool is_proj, uint32_t coord, uint32_t coord_components, uint32_t dref,
 	                                     uint32_t grad_x, uint32_t grad_y, uint32_t lod, uint32_t coffset,
@@ -181,6 +182,7 @@ protected:
 	virtual void emit_buffer_block(const SPIRVariable &type);
 	virtual void emit_push_constant_block(const SPIRVariable &var);
 	virtual void emit_uniform(const SPIRVariable &var);
+	virtual std::string unpack_expression_type(std::string expr_str, const SPIRType &type);
 
 	std::unique_ptr<std::ostringstream> buffer;
 
@@ -240,6 +242,7 @@ protected:
 	std::string to_array_size(const SPIRType &type, uint32_t index);
 	uint32_t to_array_size_literal(const SPIRType &type, uint32_t index) const;
 	std::string variable_decl(const SPIRVariable &variable);
+	std::string variable_decl_function_local(SPIRVariable &variable);
 
 	void add_local_variable_name(uint32_t id);
 	void add_resource_name(uint32_t id);
@@ -247,6 +250,7 @@ protected:
 
 	bool is_non_native_row_major_matrix(uint32_t id);
 	bool member_is_non_native_row_major_matrix(const SPIRType &type, uint32_t index);
+	bool member_is_packed_type(const SPIRType &type, uint32_t index);
 	virtual std::string convert_row_major_matrix(std::string exp_str);
 
 	std::unordered_set<std::string> local_variable_names;
@@ -282,6 +286,7 @@ protected:
 	void emit_push_constant_block_vulkan(const SPIRVariable &var);
 	void emit_push_constant_block_glsl(const SPIRVariable &var);
 	void emit_interface_block(const SPIRVariable &type);
+	void emit_flattened_io_block(const SPIRVariable &var, const char *qual);
 	void emit_block_chain(SPIRBlock &block);
 	void emit_specialization_constant(const SPIRConstant &constant);
 	std::string emit_continue_block(uint32_t continue_block);
@@ -306,7 +311,9 @@ protected:
 	void emit_binary_func_op_cast(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1, const char *op,
 	                              SPIRType::BaseType input_type, bool skip_cast_if_equal_type);
 	void emit_unary_func_op(uint32_t result_type, uint32_t result_id, uint32_t op0, const char *op);
+	void emit_unrolled_unary_op(uint32_t result_type, uint32_t result_id, uint32_t operand, const char *op);
 	void emit_binary_op(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1, const char *op);
+	void emit_unrolled_binary_op(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1, const char *op);
 	void emit_binary_op_cast(uint32_t result_type, uint32_t result_id, uint32_t op0, uint32_t op1, const char *op,
 	                         SPIRType::BaseType input_type, bool skip_cast_if_equal_type);
 
@@ -317,8 +324,8 @@ protected:
 	bool expression_is_forwarded(uint32_t id);
 	SPIRExpression &emit_op(uint32_t result_type, uint32_t result_id, const std::string &rhs, bool forward_rhs,
 	                        bool suppress_usage_tracking = false);
-	std::string access_chain(uint32_t base, const uint32_t *indices, uint32_t count, bool index_is_literal,
-	                         bool chain_only = false, bool *need_transpose = nullptr);
+	std::string access_chain_internal(uint32_t base, const uint32_t *indices, uint32_t count, bool index_is_literal,
+	                                  bool chain_only = false, bool *need_transpose = nullptr);
 	std::string access_chain(uint32_t base, const uint32_t *indices, uint32_t count, const SPIRType &target_type,
 	                         bool *need_transpose = nullptr);
 
@@ -350,10 +357,11 @@ protected:
 	std::string argument_decl(const SPIRFunction::Parameter &arg);
 	std::string to_qualifiers_glsl(uint32_t id);
 	const char *to_precision_qualifiers_glsl(uint32_t id);
+	virtual const char *to_storage_qualifiers_glsl(const SPIRVariable &var);
 	const char *flags_to_precision_qualifiers_glsl(const SPIRType &type, uint64_t flags);
 	const char *format_to_glsl(spv::ImageFormat format);
-	std::string layout_for_member(const SPIRType &type, uint32_t index);
-	std::string to_interpolation_qualifiers(uint64_t flags);
+	virtual std::string layout_for_member(const SPIRType &type, uint32_t index);
+	virtual std::string to_interpolation_qualifiers(uint64_t flags);
 	uint64_t combined_decoration_for_member(const SPIRType &type, uint32_t index);
 	std::string layout_for_variable(const SPIRVariable &variable);
 	std::string to_combined_image_sampler(uint32_t image_id, uint32_t samp_id);
@@ -366,7 +374,7 @@ protected:
 	uint32_t type_to_std430_size(const SPIRType &type, uint64_t flags);
 
 	std::string bitcast_glsl(const SPIRType &result_type, uint32_t arg);
-	std::string bitcast_glsl_op(const SPIRType &result_type, const SPIRType &argument_type);
+	virtual std::string bitcast_glsl_op(const SPIRType &result_type, const SPIRType &argument_type);
 	std::string build_composite_combiner(const uint32_t *elems, uint32_t length);
 	bool remove_duplicate_swizzle(std::string &op);
 	bool remove_unity_swizzle(uint32_t base, std::string &op);
@@ -379,19 +387,23 @@ protected:
 
 	void replace_fragment_output(SPIRVariable &var);
 	void replace_fragment_outputs();
-	std::string legacy_tex_op(const std::string &op, const SPIRType &imgtype);
+	bool check_explicit_lod_allowed(uint32_t lod);
+	std::string legacy_tex_op(const std::string &op, const SPIRType &imgtype, uint32_t lod);
 
 	uint32_t indent = 0;
 
 	std::unordered_set<uint32_t> emitted_functions;
 
 	std::unordered_set<uint32_t> flattened_buffer_blocks;
+	std::unordered_set<uint32_t> flattened_structs;
+
+	std::string load_flattened_struct(SPIRVariable &var);
+	std::string to_flattened_struct_member(const SPIRType &type, uint32_t index);
+	void store_flattened_struct(SPIRVariable &var, uint32_t value);
 
 	// Usage tracking. If a temporary is used more than once, use the temporary instead to
 	// avoid AST explosion when SPIRV is generated with pure SSA and doesn't write stuff to variables.
 	std::unordered_map<uint32_t, uint32_t> expression_usage_counts;
-	std::unordered_set<uint32_t> forced_temporaries;
-	std::unordered_set<uint32_t> forwarded_temporaries;
 	void track_expression_read(uint32_t id);
 
 	std::unordered_set<std::string> forced_extensions;

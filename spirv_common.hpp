@@ -55,6 +55,16 @@ public:
 #define SPIRV_CROSS_THROW(x) throw CompilerError(x)
 #endif
 
+#if __cplusplus >= 201402l
+#define SPIRV_CROSS_DEPRECATED(reason) [[deprecated(reason)]]
+#elif defined(__GNUC__)
+#define SPIRV_CROSS_DEPRECATED(reason) __attribute__((deprecated))
+#elif defined(_MSC_VER)
+#define SPIRV_CROSS_DEPRECATED(reason) __declspec(deprecated(reason))
+#else
+#define SPIRV_CROSS_DEPRECATED(reason)
+#endif
+
 namespace inner
 {
 template <typename T>
@@ -283,6 +293,7 @@ struct SPIRExtension : IVariant
 
 	enum Extension
 	{
+		Unsupported,
 		GLSL
 	};
 
@@ -511,6 +522,14 @@ struct SPIRFunction : IVariant
 		uint32_t id;
 		uint32_t read_count;
 		uint32_t write_count;
+
+		// Set to true if this parameter aliases a global variable,
+		// used mostly in Metal where global variables
+		// have to be passed down to functions as regular arguments.
+		// However, for this kind of variable, we should not care about
+		// read and write counts as access to the function arguments
+		// is not local to the function in question.
+		bool alias_global_variable;
 	};
 
 	// When calling a function, and we're remapping separate image samplers,
@@ -547,10 +566,10 @@ struct SPIRFunction : IVariant
 		local_variables.push_back(id);
 	}
 
-	void add_parameter(uint32_t parameter_type, uint32_t id)
+	void add_parameter(uint32_t parameter_type, uint32_t id, bool alias_global_variable = false)
 	{
 		// Arguments are read-only until proven otherwise.
-		arguments.push_back({ parameter_type, id, 0u, 0u });
+		arguments.push_back({ parameter_type, id, 0u, 0u, alias_global_variable });
 	}
 
 	bool active = false;
