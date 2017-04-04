@@ -5736,7 +5736,7 @@ const char *CompilerGLSL::flags_to_precision_qualifiers_glsl(const SPIRType &typ
 		    type.basetype != SPIRType::Sampler)
 			return "";
 
-		if (flags & (1ull << DecorationRelaxedPrecision))
+		if (flags & (1ull << DecorationRelaxedPrecision) || options.relax_everything)
 		{
 			bool implied_fmediump = type.basetype == SPIRType::Float &&
 			                        options.fragment.default_float_precision == Options::Mediump &&

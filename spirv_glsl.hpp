@@ -69,6 +69,8 @@ public:
 
 		bool use_oes_egl_image_for_videos = false;
 
+		bool relax_everything = false;
+
 		enum Precision
 		{
 			DontCare,
