@@ -9,10 +9,10 @@ struct main0_out
     float gl_PointSize;
 };
 
-vertex main0_out main0(uint gl_VertexIndex [[vertex_id]], uint gl_InstanceIndex [[instance_id]])
+vertex main0_out main0(texture2d<float> uSamp [[texture(0)]], texture2d<float> uSampo [[texture(1)]])
 {
     main0_out out = {};
-    out.gl_Position = float4(1.0, 2.0, 3.0, 4.0) * float(gl_VertexIndex + gl_InstanceIndex);
+    out.gl_Position = uSamp.read(uint2(10, 0)) + uSampo.read(uint2(100, 0));
     return out;
 }
 
