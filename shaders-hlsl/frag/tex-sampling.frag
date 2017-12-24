@@ -18,12 +18,12 @@ uniform sampler samplerNonDepth;
 uniform texture2D separateTex2d;
 uniform texture2D separateTex2dDepth;
 
-in float texCoord1d;
-in vec2 texCoord2d;
-in vec3 texCoord3d;
-in vec4 texCoord4d;
+layout(location = 0) in float texCoord1d;
+layout(location = 1) in vec2 texCoord2d;
+layout(location = 2) in vec3 texCoord3d;
+layout(location = 3) in vec4 texCoord4d;
 
-out vec4 FragColor;
+layout(location = 0) out vec4 FragColor;
 
 void main()
 {
@@ -61,6 +61,16 @@ void main()
 	texcolor += texture(texCubeArray, texCoord4d);
 
 	texcolor += textureGather(tex2d, texCoord2d);
+	texcolor += textureGather(tex2d, texCoord2d, 0);
+	texcolor += textureGather(tex2d, texCoord2d, 1);
+	texcolor += textureGather(tex2d, texCoord2d, 2);
+	texcolor += textureGather(tex2d, texCoord2d, 3);
+
+	texcolor += textureGatherOffset(tex2d, texCoord2d, ivec2(1, 1));
+	texcolor += textureGatherOffset(tex2d, texCoord2d, ivec2(1, 1), 0);
+	texcolor += textureGatherOffset(tex2d, texCoord2d, ivec2(1, 1), 1);
+	texcolor += textureGatherOffset(tex2d, texCoord2d, ivec2(1, 1), 2);
+	texcolor += textureGatherOffset(tex2d, texCoord2d, ivec2(1, 1), 3);
 
 	texcolor += texelFetch(tex2d, ivec2(1, 2), 0);
 

@@ -171,8 +171,9 @@ void CompilerCPP::emit_resources()
 			auto &type = get<SPIRType>(var.basetype);
 
 			if (var.storage != StorageClassFunction && type.pointer && type.storage == StorageClassUniform &&
-			    !is_hidden_variable(var) && (meta[type.self].decoration.decoration_flags &
-			                                 ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
+			    !is_hidden_variable(var) &&
+			    (meta[type.self].decoration.decoration_flags &
+			     ((1ull << DecorationBlock) | (1ull << DecorationBufferBlock))))
 			{
 				emit_buffer_block(var);
 			}
@@ -241,6 +242,8 @@ void CompilerCPP::emit_resources()
 
 	if (emitted)
 		statement("");
+
+	declare_undefined_values();
 
 	statement("inline void init(spirv_cross_shader& s)");
 	begin_scope();
@@ -326,6 +329,9 @@ string CompilerCPP::compile()
 
 	// Emit C entry points
 	emit_c_linkage();
+
+	// Entry point in CPP is always main() for the time being.
+	get_entry_point().name = "main";
 
 	return buffer->str();
 }
@@ -421,7 +427,7 @@ string CompilerCPP::argument_decl(const SPIRFunction::Parameter &arg)
 	return join(constref ? "const " : "", base, " &", variable_name);
 }
 
-string CompilerCPP::variable_decl(const SPIRType &type, const string &name)
+string CompilerCPP::variable_decl(const SPIRType &type, const string &name, uint32_t /* id */)
 {
 	string base = type_to_glsl(type);
 	remap_variable_type_name(type, name, base);
