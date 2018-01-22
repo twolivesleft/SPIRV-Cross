@@ -65,9 +65,6 @@ public:
 		// Debug option to always emit temporary variables for all expressions.
 		bool force_temporary = false;
 
-		// If true, variables will be moved to their appropriate scope through CFG analysis.
-		bool cfg_analysis = true;
-
 		// If true, Vulkan GLSL features are used instead of GL-compatible features.
 		// Mostly useful for debugging SPIR-V files.
 		bool vulkan_semantics = false;
@@ -294,10 +291,10 @@ protected:
 	void add_resource_name(uint32_t id);
 	void add_member_name(SPIRType &type, uint32_t name);
 
-	bool is_non_native_row_major_matrix(uint32_t id);
-	bool member_is_non_native_row_major_matrix(const SPIRType &type, uint32_t index);
+	virtual bool is_non_native_row_major_matrix(uint32_t id);
+	virtual bool member_is_non_native_row_major_matrix(const SPIRType &type, uint32_t index);
 	bool member_is_packed_type(const SPIRType &type, uint32_t index) const;
-	virtual std::string convert_row_major_matrix(std::string exp_str);
+	virtual std::string convert_row_major_matrix(std::string exp_str, const SPIRType &exp_type);
 
 	std::unordered_set<std::string> local_variable_names;
 	std::unordered_set<std::string> resource_names;
@@ -325,6 +322,8 @@ protected:
 		bool boolean_mix_support = true;
 		bool allow_precision_qualifiers = false;
 		bool can_swizzle_scalar = false;
+		bool force_temp_use_for_two_vector_shuffles = false;
+		bool force_gl_in_out_block = false;
 	} backend;
 
 	void emit_struct(SPIRType &type);
@@ -375,9 +374,10 @@ protected:
 	SPIRExpression &emit_op(uint32_t result_type, uint32_t result_id, const std::string &rhs, bool forward_rhs,
 	                        bool suppress_usage_tracking = false);
 	std::string access_chain_internal(uint32_t base, const uint32_t *indices, uint32_t count, bool index_is_literal,
-	                                  bool chain_only = false, bool *need_transpose = nullptr);
+	                                  bool chain_only = false, bool *need_transpose = nullptr,
+	                                  bool *result_is_packed = nullptr);
 	std::string access_chain(uint32_t base, const uint32_t *indices, uint32_t count, const SPIRType &target_type,
-	                         bool *need_transpose = nullptr);
+	                         bool *need_transpose = nullptr, bool *result_is_packed = nullptr);
 
 	std::string flattened_access_chain(uint32_t base, const uint32_t *indices, uint32_t count,
 	                                   const SPIRType &target_type, uint32_t offset, uint32_t matrix_stride,
@@ -453,7 +453,7 @@ protected:
 	std::unordered_set<uint32_t> flattened_structs;
 
 	std::string load_flattened_struct(SPIRVariable &var);
-	std::string to_flattened_struct_member(const SPIRType &type, uint32_t index);
+	std::string to_flattened_struct_member(const SPIRVariable &var, uint32_t index);
 	void store_flattened_struct(SPIRVariable &var, uint32_t value);
 
 	// Usage tracking. If a temporary is used more than once, use the temporary instead to
@@ -500,6 +500,7 @@ protected:
 	void find_static_extensions();
 
 	std::string emit_for_loop_initializers(const SPIRBlock &block);
+	bool for_loop_initializers_are_same_type(const SPIRBlock &block);
 	bool optimize_read_modify_write(const std::string &lhs, const std::string &rhs);
 	void fixup_image_load_store_access();
 
@@ -510,6 +511,8 @@ protected:
 	static std::string sanitize_underscores(const std::string &str);
 
 	bool can_use_io_location(spv::StorageClass storage);
+	const Instruction *get_next_instruction_in_block(const Instruction &instr);
+	static uint32_t mask_relevant_memory_semantics(uint32_t semantics);
 
 private:
 	void init()
