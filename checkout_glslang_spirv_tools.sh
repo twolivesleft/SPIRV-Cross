@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GLSLANG_REV=9c6f8cc29ba303b43ccf36deea6bb38a304f9b92
-SPIRV_TOOLS_REV=e28edd458b729da7bbfd51e375feb33103709e6f
+GLSLANG_REV=7cec64fc42eba4587d2f3d73c03cb68ceb18dca4
+SPIRV_TOOLS_REV=fe9121f72144f1e1657cd21a55a1fec07c940e56
 
 if [ -d external/glslang ]; then
 	echo "Updating glslang to revision $GLSLANG_REV."
@@ -18,13 +18,6 @@ else
 fi
 cd ../..
 
-echo "Building glslang."
-mkdir -p external/glslang-build
-cd external/glslang-build
-cmake ../glslang -DCMAKE_BUILD_TYPE=Release -G"Unix Makefiles"
-make -j$(nproc)
-cd ../..
-
 if [ -d external/spirv-tools ]; then
 	echo "Updating SPIRV-Tools to revision $SPIRV_TOOLS_REV."
 	cd external/spirv-tools
@@ -37,21 +30,15 @@ else
 	git clone git://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
 	cd spirv-tools
 	git checkout $SPIRV_TOOLS_REV
-
-	if [ -d external/spirv-headers ]; then
-		cd external/spirv-headers
-		git pull origin master
-		cd ../..
-	else
-		git clone git://github.com/KhronosGroup/SPIRV-Headers.git external/spirv-headers
-	fi
 fi
-cd ../..
 
-echo "Building SPIRV-Tools."
-mkdir -p external/spirv-tools-build
-cd external/spirv-tools-build
-cmake ../spirv-tools -DCMAKE_BUILD_TYPE=Release -G"Unix Makefiles"
-make -j$(nproc)
+if [ -d external/spirv-headers ]; then
+	cd external/spirv-headers
+	git pull origin master
+	cd ../..
+else
+	git clone git://github.com/KhronosGroup/SPIRV-Headers.git external/spirv-headers
+fi
+
 cd ../..
 
