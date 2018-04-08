@@ -435,6 +435,7 @@ protected:
 	std::string declare_temporary(uint32_t type, uint32_t id);
 	void append_global_func_args(const SPIRFunction &func, uint32_t index, std::vector<std::string> &arglist);
 	std::string to_expression(uint32_t id);
+	virtual std::string to_var_access(uint32_t id);
 	std::string to_enclosed_expression(uint32_t id);
 	std::string enclose_expression(const std::string &expr);
 	void strip_enclosed_expression(std::string &expr);

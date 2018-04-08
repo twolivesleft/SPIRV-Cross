@@ -2395,7 +2395,7 @@ string CompilerGLSL::to_expression(uint32_t id)
 			if (dec.builtin)
 				return builtin_to_glsl(dec.builtin_type, var.storage);
 			else
-				return to_name(id);
+				return to_var_access(id);
 		}
 	}
 
@@ -2414,6 +2414,11 @@ string CompilerGLSL::to_expression(uint32_t id)
 	default:
 		return to_name(id);
 	}
+}
+
+string CompilerGLSL::to_var_access(uint32_t id)
+{
+	return to_name(id);
 }
 
 string CompilerGLSL::constant_op_expression(const SPIRConstantOp &cop)

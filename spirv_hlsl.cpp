@@ -1241,7 +1241,7 @@ void CompilerHLSL::emit_resources()
 
 	if (!output_variables.empty() || !active_output_builtins.empty())
 	{
-		require_output = true;
+		require_output = execution.model != ExecutionModelGeometry;
 		statement("struct SPIRV_Cross_Output");
 
 		begin_scope();
@@ -1958,6 +1958,8 @@ void CompilerHLSL::emit_function_prototype(SPIRFunction &func, const Bitset &ret
 			decl += "frag_main";
 		else if (execution.model == ExecutionModelGLCompute)
 			decl += "comp_main";
+		else if (execution.model == ExecutionModelGeometry)
+			decl += "geom_main";
 		else
 			SPIRV_CROSS_THROW("Unsupported execution model.");
 		processing_entry_point = true;
@@ -2015,9 +2017,46 @@ void CompilerHLSL::emit_function_prototype(SPIRFunction &func, const Bitset &ret
 
 void CompilerHLSL::emit_hlsl_entry_point()
 {
+	auto &execution = get_entry_point();
 	vector<string> arguments;
 
-	if (require_input)
+	if (execution.model == ExecutionModelGeometry)
+	{
+		string input_type;
+		string input_size;
+		if (execution.flags.get(ExecutionModeInputPoints))
+		{
+			input_type = "point";
+			input_size = "1";
+		}
+		else if (execution.flags.get(ExecutionModeInputLines))
+		{
+			input_type = "line";
+			input_size = "2";
+		}
+		else if (execution.flags.get(ExecutionModeInputLinesAdjacency))
+		{
+			input_type = "line";
+			input_size = "2";
+		}
+		else if (execution.flags.get(ExecutionModeTriangles))
+		{
+			input_type = "triangle";
+			input_size = "3";
+		}
+		else if (execution.flags.get(ExecutionModeInputTrianglesAdjacency))
+		{
+			input_type = "triangle";
+			input_size = "3";
+		}
+		else
+		{
+			SPIRV_CROSS_THROW("Unknown geometry shader input type.");
+		}
+		arguments.push_back(input_type + " SPIRV_Cross_Input stage_input[" + input_size + "]");
+		arguments.push_back("inout TriangleStream<SPIRV_Cross_Output> stage_output");
+	}
+	else if (require_input)
 		arguments.push_back("SPIRV_Cross_Input stage_input");
 
 	// Add I/O blocks as separate arguments with appropriate storage qualifier.
@@ -2045,9 +2084,7 @@ void CompilerHLSL::emit_hlsl_entry_point()
 			}
 		}
 	}
-
-	auto &execution = get_entry_point();
-
+		
 	switch (execution.model)
 	{
 	case ExecutionModelGLCompute:
@@ -2072,6 +2109,9 @@ void CompilerHLSL::emit_hlsl_entry_point()
 	case ExecutionModelFragment:
 		if (execution.flags.get(ExecutionModeEarlyFragmentTests))
 			statement("[earlydepthstencil]");
+		break;
+	case ExecutionModelGeometry:
+		statement("[maxvertexcount(", execution.output_vertices, ")]");
 		break;
 	default:
 		break;
@@ -2173,6 +2213,8 @@ void CompilerHLSL::emit_hlsl_entry_point()
 		statement("frag_main();");
 	else if (execution.model == ExecutionModelGLCompute)
 		statement("comp_main();");
+	else if (execution.model == ExecutionModelGeometry)
+		statement("geom_main();");
 	else
 		SPIRV_CROSS_THROW("Unsupported shader stage.");
 
@@ -4124,6 +4166,23 @@ void CompilerHLSL::emit_instruction(const Instruction &instruction)
 		UFOP(reversebits);
 		break;
 
+	// Geometry shaders
+	case OpEmitVertex:
+		statement("SPIRV_Cross_geometry_stream.Append(SPIRV_Cross_output);");
+		break;
+
+	case OpEndPrimitive:
+		statement("SPIRV_Cross_geometry_stream.RestartStrip();");
+		break;
+
+	case OpEmitStreamVertex:
+		statement("EmitStreamVertex();"); // TODO
+		break;
+
+	case OpEndStreamPrimitive:
+		statement("EndStreamPrimitive();"); // TODO
+		break;
+
 	default:
 		CompilerGLSL::emit_instruction(instruction);
 		break;
@@ -4186,6 +4245,16 @@ void CompilerHLSL::require_texture_query_variant(const SPIRType &type)
 		force_recompile = true;
 		required_textureSizeVariants |= mask;
 	}
+}
+
+string CompilerHLSL::to_var_access(uint32_t id)
+{
+	auto &var = ids.at(id).get<SPIRVariable>();
+	auto &execution = get_entry_point();
+	if (var.storage == StorageClassOutput && execution.model == ExecutionModelGeometry)
+		return "output." + to_name(id);
+	else
+		return to_name(id);
 }
 
 string CompilerHLSL::compile(std::vector<HLSLVertexAttributeRemap> vertex_attributes)

@@ -141,6 +141,7 @@ private:
 	void emit_specialization_constants();
 	void emit_composite_constants();
 	void emit_fixup() override;
+	std::string to_var_access(uint32_t id) override;
 	std::string builtin_to_glsl(spv::BuiltIn builtin, spv::StorageClass storage) override;
 	std::string layout_for_member(const SPIRType &type, uint32_t index) override;
 	std::string to_interpolation_qualifiers(const Bitset &flags) override;
