@@ -3095,7 +3095,7 @@ string CompilerMSL::entry_point_args(bool append_comma)
 			ep_args += " [[texture(" + convert_to_string(r.index) + ")]]";
 			break;
 		default:
-			SPIRV_CROSS_THROW("Unexpected resource type");
+			//SPIRV_CROSS_THROW("Unexpected resource type");
 			break;
 		}
 	}
