@@ -690,6 +690,12 @@ uint32_t CompilerMSL::add_interface_block(StorageClass storage)
 	// Oddly, Metal handles inputs better if they are sorted in reverse order.
 	MemberSorter::SortAspect sort_aspect =
 	    (storage == StorageClassInput) ? MemberSorter::LocationReverse : MemberSorter::Location;
+	auto &execution = get_entry_point();
+	if (execution.model == ExecutionModelVertex && storage == StorageClassOutput ||
+	    execution.model == ExecutionModelFragment && storage == StorageClassInput)
+	{
+		sort_aspect = MemberSorter::Alphabetical;
+	}
 	MemberSorter member_sorter(ib_type, meta[ib_type_id], sort_aspect);
 	member_sorter.sort();
 
