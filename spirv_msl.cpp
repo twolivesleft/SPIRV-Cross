@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "spirv_msl.hpp"
 #include "GLSL.std.450.h"
+#include "spirv_msl.hpp"
 
 #include <algorithm>
 #include <assert.h>
@@ -3475,9 +3475,21 @@ string CompilerMSL::image_type_glsl(const SPIRType &type, uint32_t id)
 		switch (img_type.access)
 		{
 		case AccessQualifierReadOnly:
-			img_type_name += ", access::read";
+		{
+		
+			auto *p_var = maybe_get_backing_variable(id);
+			if (p_var && p_var->basevariable)
+				p_var = maybe_get<SPIRVariable>(p_var->basevariable);
+			if (p_var && has_decoration(p_var->self, DecorationNonReadable))
+			{
+				img_type_name += ", access::write";
+			}
+			else
+			{
+				img_type_name += ", access::read";
+			}
 			break;
-
+		}
 		case AccessQualifierWriteOnly:
 			img_type_name += ", access::write";
 			break;
