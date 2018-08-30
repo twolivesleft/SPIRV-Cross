@@ -988,6 +988,9 @@ string CompilerMSL::unpack_expression_type(string expr_str, const SPIRType &type
 // Emits the file header info
 void CompilerMSL::emit_header()
 {
+	statement("// ", get_entry_point_name());
+	statement("");
+	
 	for (auto &pragma : pragma_lines)
 		statement(pragma);
 
