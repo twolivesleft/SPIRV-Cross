@@ -3253,7 +3253,7 @@ string CompilerMSL::unpack_expression_type(string expr_str, const SPIRType &type
 // Emits the file header info
 void CompilerMSL::emit_header()
 {
-	statement("// ", get_entry_point_name());
+	//statement("// ", get_entry_point_name());
 	statement("");
 	
 	// This particular line can be overridden during compilation, so make it a flag and not a pragma line.

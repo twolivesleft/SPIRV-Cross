@@ -4921,7 +4921,7 @@ void CompilerHLSL::require_texture_query_variant(const SPIRType &type)
 
 string CompilerHLSL::to_var_access(uint32_t id)
 {
-	auto &var = ids.at(id).get<SPIRVariable>();
+	auto &var = get<SPIRVariable>(id);
 	auto &execution = get_entry_point();
 	if (var.storage == StorageClassOutput && execution.model == ExecutionModelGeometry)
 		return "output." + to_name(id);
@@ -4929,7 +4929,6 @@ string CompilerHLSL::to_var_access(uint32_t id)
 		return to_name(id);
 }
 
-string CompilerHLSL::compile(std::vector<HLSLVertexAttributeRemap> vertex_attributes)
 void CompilerHLSL::set_root_constant_layouts(std::vector<RootConstants> layout)
 {
 	root_constants_layout = move(layout);
