@@ -3,7 +3,11 @@
 
 using namespace metal;
 
+struct Test
+{
+};
 vertex void main0()
 {
+    Test t = Test{  };
 }
 

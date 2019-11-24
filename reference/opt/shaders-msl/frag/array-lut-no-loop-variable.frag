@@ -1,39 +1,63 @@
 #pragma clang diagnostic ignored "-Wmissing-prototypes"
+#pragma clang diagnostic ignored "-Wmissing-braces"
 
 #include <metal_stdlib>
 #include <simd/simd.h>
 
 using namespace metal;
 
-constant float _17[5] = {1.0, 2.0, 3.0, 4.0, 5.0};
+template<typename T, size_t Num>
+struct spvUnsafeArray
+{
+    T elements[Num ? Num : 1];
+    
+    thread T& operator [] (size_t pos) thread
+    {
+        return elements[pos];
+    }
+    constexpr const thread T& operator [] (size_t pos) const thread
+    {
+        return elements[pos];
+    }
+    
+    device T& operator [] (size_t pos) device
+    {
+        return elements[pos];
+    }
+    constexpr const device T& operator [] (size_t pos) const device
+    {
+        return elements[pos];
+    }
+    
+    constexpr const constant T& operator [] (size_t pos) const constant
+    {
+        return elements[pos];
+    }
+    
+    threadgroup T& operator [] (size_t pos) threadgroup
+    {
+        return elements[pos];
+    }
+    constexpr const threadgroup T& operator [] (size_t pos) const threadgroup
+    {
+        return elements[pos];
+    }
+};
+
+constant spvUnsafeArray<float, 5> _17 = spvUnsafeArray<float, 5>({ 1.0, 2.0, 3.0, 4.0, 5.0 });
 
 struct main0_out
 {
     float4 FragColor [[color(0)]];
 };
 
-// Implementation of an array copy function to cover GLSL's ability to copy an array via assignment.
-template<typename T, uint N>
-void spvArrayCopy(thread T (&dst)[N], thread const T (&src)[N])
-{
-    for (uint i = 0; i < N; dst[i] = src[i], i++);
-}
-
-// An overload for constant arrays.
-template<typename T, uint N>
-void spvArrayCopyConstant(thread T (&dst)[N], constant T (&src)[N])
-{
-    for (uint i = 0; i < N; dst[i] = src[i], i++);
-}
-
 fragment main0_out main0()
 {
     main0_out out = {};
-    float lut[5] = {1.0, 2.0, 3.0, 4.0, 5.0};
     for (int _46 = 0; _46 < 4; )
     {
         int _33 = _46 + 1;
-        out.FragColor += float4(lut[_33]);
+        out.FragColor += float4(_17[_33]);
         _46 = _33;
         continue;
     }

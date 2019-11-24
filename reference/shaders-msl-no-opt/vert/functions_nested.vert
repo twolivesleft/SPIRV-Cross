@@ -27,8 +27,6 @@ struct VertexConstantsBuffer
     float4 vc[16];
 };
 
-constant float4 _295 = {};
-
 struct main0_out
 {
     float4 tc0 [[user(locn0)]];
@@ -36,6 +34,14 @@ struct main0_out
     float4 gl_Position [[position]];
 };
 
+// Returns 2D texture coords corresponding to 1D texel buffer coords
+static inline __attribute__((always_inline))
+uint2 spvTexelBufferCoord(uint tc)
+{
+    return uint2(tc % 4096, tc / 4096);
+}
+
+static inline __attribute__((always_inline))
 attr_desc fetch_desc(thread const int& location, constant VertexBuffer& v_227)
 {
     int attribute_flags = v_227.input_attributes[location].w;
@@ -49,6 +55,7 @@ attr_desc fetch_desc(thread const int& location, constant VertexBuffer& v_227)
     return result;
 }
 
+static inline __attribute__((always_inline))
 uint get_bits(thread const uint4& v, thread const int& swap)
 {
     if (swap != 0)
@@ -58,28 +65,29 @@ uint get_bits(thread const uint4& v, thread const int& swap)
     return ((v.x | (v.y << uint(8))) | (v.z << uint(16))) | (v.w << uint(24));
 }
 
+static inline __attribute__((always_inline))
 float4 fetch_attr(thread const attr_desc& desc, thread const int& vertex_id, thread const texture2d<uint> input_stream)
 {
     float4 result = float4(0.0, 0.0, 0.0, 1.0);
     bool reverse_order = false;
     int first_byte = (vertex_id * desc.stride) + desc.starting_offset;
+    uint4 tmp;
     for (int n = 0; n < 4; n++)
     {
         if (n == desc.attribute_size)
         {
             break;
         }
-        uint4 tmp;
         switch (desc.type)
         {
             case 0:
             {
                 int _131 = first_byte;
                 first_byte = _131 + 1;
-                tmp.x = input_stream.read(uint2(_131, 0)).x;
+                tmp.x = input_stream.read(spvTexelBufferCoord(_131)).x;
                 int _138 = first_byte;
                 first_byte = _138 + 1;
-                tmp.y = input_stream.read(uint2(_138, 0)).x;
+                tmp.y = input_stream.read(spvTexelBufferCoord(_138)).x;
                 uint4 param = tmp;
                 int param_1 = desc.swap_bytes;
                 result[n] = float(get_bits(param, param_1));
@@ -89,16 +97,16 @@ float4 fetch_attr(thread const attr_desc& desc, thread const int& vertex_id, thr
             {
                 int _156 = first_byte;
                 first_byte = _156 + 1;
-                tmp.x = input_stream.read(uint2(_156, 0)).x;
+                tmp.x = input_stream.read(spvTexelBufferCoord(_156)).x;
                 int _163 = first_byte;
                 first_byte = _163 + 1;
-                tmp.y = input_stream.read(uint2(_163, 0)).x;
+                tmp.y = input_stream.read(spvTexelBufferCoord(_163)).x;
                 int _170 = first_byte;
                 first_byte = _170 + 1;
-                tmp.z = input_stream.read(uint2(_170, 0)).x;
+                tmp.z = input_stream.read(spvTexelBufferCoord(_170)).x;
                 int _177 = first_byte;
                 first_byte = _177 + 1;
-                tmp.w = input_stream.read(uint2(_177, 0)).x;
+                tmp.w = input_stream.read(spvTexelBufferCoord(_177)).x;
                 uint4 param_2 = tmp;
                 int param_3 = desc.swap_bytes;
                 result[n] = as_type<float>(get_bits(param_2, param_3));
@@ -108,7 +116,7 @@ float4 fetch_attr(thread const attr_desc& desc, thread const int& vertex_id, thr
             {
                 int _195 = first_byte;
                 first_byte = _195 + 1;
-                result[n] = float(input_stream.read(uint2(_195, 0)).x);
+                result[n] = float(input_stream.read(spvTexelBufferCoord(_195)).x);
                 reverse_order = desc.swap_bytes != 0;
                 break;
             }
@@ -126,11 +134,12 @@ float4 fetch_attr(thread const attr_desc& desc, thread const int& vertex_id, thr
     return _210;
 }
 
+static inline __attribute__((always_inline))
 float4 read_location(thread const int& location, constant VertexBuffer& v_227, thread uint& gl_VertexIndex, thread texture2d<uint> buff_in_2, thread texture2d<uint> buff_in_1)
 {
     int param = location;
     attr_desc desc = fetch_desc(param, v_227);
-    int vertex_id = gl_VertexIndex - int(v_227.vertex_base_index);
+    int vertex_id = int(gl_VertexIndex) - int(v_227.vertex_base_index);
     if (desc.is_volatile != 0)
     {
         attr_desc param_1 = desc;
@@ -145,6 +154,7 @@ float4 read_location(thread const int& location, constant VertexBuffer& v_227, t
     }
 }
 
+static inline __attribute__((always_inline))
 void vs_adjust(thread float4& dst_reg0, thread float4& dst_reg1, thread float4& dst_reg7, constant VertexBuffer& v_227, thread uint& gl_VertexIndex, thread texture2d<uint> buff_in_2, thread texture2d<uint> buff_in_1, constant VertexConstantsBuffer& v_309)
 {
     int param = 3;
