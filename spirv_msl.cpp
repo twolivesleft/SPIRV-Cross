@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "GLSL.std.450.h"
 #include "spirv_msl.hpp"
+#include "GLSL.std.450.h"
 
 #include <algorithm>
 #include <assert.h>
@@ -2415,8 +2415,8 @@ uint32_t CompilerMSL::add_interface_block(StorageClass storage, bool patch)
 		add_variable_to_interface_block(storage, ib_var_ref, ib_type, *p_var, strip_array);
 	}
 
-	// Sort the members of the structure by their locations.
-	MemberSorter member_sorter(ib_type, ir.meta[ib_type_id], MemberSorter::Location);
+	// Sort the members of the structure alphabetically.
+	MemberSorter member_sorter(ib_type, ir.meta[ib_type_id], MemberSorter::Alphabetical);
 	member_sorter.sort();
 
 	// The member indices were saved to the original variables, but after the members
@@ -3200,8 +3200,7 @@ string CompilerMSL::unpack_expression_type(string expr_str, const SPIRType &type
 		assert(type.vecsize >= 1 && type.vecsize <= 3);
 		return enclose_expression(expr_str) + swizzle_lut[type.vecsize - 1];
 	}
-	else if (physical_type && is_matrix(*physical_type) && is_vector(type) &&
-	         physical_type->vecsize > type.vecsize)
+	else if (physical_type && is_matrix(*physical_type) && is_vector(type) && physical_type->vecsize > type.vecsize)
 	{
 		// Extract column from padded matrix.
 		assert(type.vecsize >= 1 && type.vecsize <= 3);
@@ -3255,7 +3254,7 @@ void CompilerMSL::emit_header()
 {
 	//statement("// ", get_entry_point_name());
 	statement("");
-	
+
 	// This particular line can be overridden during compilation, so make it a flag and not a pragma line.
 	if (suppress_missing_prototypes)
 		statement("#pragma clang diagnostic ignored \"-Wmissing-prototypes\"");
@@ -10589,7 +10588,7 @@ string CompilerMSL::image_type_glsl(const SPIRType &type, uint32_t id)
 		{
 		case AccessQualifierReadOnly:
 		{
-		
+
 			auto *p_var = maybe_get_backing_variable(id);
 			if (p_var && p_var->basevariable)
 				p_var = maybe_get<SPIRVariable>(p_var->basevariable);
