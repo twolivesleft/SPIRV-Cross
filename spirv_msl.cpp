@@ -1058,6 +1058,7 @@ string CompilerMSL::compile()
 	stage_out_var_id = add_interface_block(StorageClassOutput);
 	patch_stage_out_var_id = add_interface_block(StorageClassOutput, true);
 	stage_in_var_id = add_interface_block(StorageClassInput);
+	stage_uniforms_var_id = add_interface_block(StorageClassUniformConstant);
 	if (get_execution_model() == ExecutionModelTessellationEvaluation)
 		patch_stage_in_var_id = add_interface_block(StorageClassInput, true);
 
@@ -2560,6 +2561,10 @@ uint32_t CompilerMSL::add_interface_block(StorageClass storage, bool patch)
 	auto &entry_func = get<SPIRFunction>(ir.default_entry_point);
 	switch (storage)
 	{
+	case StorageClassUniformConstant:
+		ib_var_ref = "uniforms";
+		break;
+
 	case StorageClassInput:
 		ib_var_ref = patch ? patch_stage_in_var_name : stage_in_var_name;
 		if (get_execution_model() == ExecutionModelTessellationControl)
@@ -8361,7 +8366,10 @@ string CompilerMSL::to_func_call_arg(const SPIRFunction::Parameter &arg, uint32_
 		}
 	}
 	else
-		arg_str += CompilerGLSL::to_func_call_arg(arg, id);
+	{
+		std::string arg_name = CompilerGLSL::to_func_call_arg(arg, id);
+		arg_str += arg.alias_global_variable && processing_entry_point ? ("uniforms." + arg_name) : arg_name;
+	}
 
 	// Need to check the base variable in case we need to apply a qualified alias.
 	uint32_t var_id = 0;
@@ -9571,6 +9579,8 @@ void CompilerMSL::entry_point_args_discrete_descriptors(string &ep_args)
 		return tie(lhs.basetype, lhs.index) < tie(rhs.basetype, rhs.index);
 	});
 
+	bool uniform_parameter_emitted = false;
+
 	for (auto &r : resources)
 	{
 		auto &var = *r.var;
@@ -9667,17 +9677,31 @@ void CompilerMSL::entry_point_args_discrete_descriptors(string &ep_args)
 		}
 		default:
 			//SPIRV_CROSS_THROW("Unexpected resource type");
-			if (!ep_args.empty())
-				ep_args += ", ";
-			if (!type.pointer)
-				ep_args += get_type_address_space(get<SPIRType>(var.basetype), var_id) + " " +
-				           type_to_glsl(type, var_id) + "& " + r.name;
+			if (var.storage == StorageClassUniformConstant)
+			{
+				if (!uniform_parameter_emitted)
+				{
+					if (!ep_args.empty())
+						ep_args += ", ";
+					ep_args += "constant " + to_name(ir.default_entry_point) + "_uniforms& uniforms [[buffer(" +
+					           (get_execution_model() == ExecutionModelFragment ? "0" : "1") + ")]]";
+					uniform_parameter_emitted = true;
+				}
+			}
 			else
-				ep_args += type_to_glsl(type, var_id) + " " + r.name;
-			ep_args += " [[buffer(" + convert_to_string(r.index) + ")";
-			if (interlocked_resources.count(var_id))
-				ep_args += ", raster_order_group(0)";
-			ep_args += "]]";
+			{
+				if (!ep_args.empty())
+					ep_args += ", ";
+				if (!type.pointer)
+					ep_args += get_type_address_space(get<SPIRType>(var.basetype), var_id) + " " +
+					           type_to_glsl(type, var_id) + "& " + r.name;
+				else
+					ep_args += type_to_glsl(type, var_id) + " " + r.name;
+				ep_args += " [[buffer(" + convert_to_string(r.index) + ")";
+				if (interlocked_resources.count(var_id))
+					ep_args += ", raster_order_group(0)";
+				ep_args += "]]";
+			}
 			break;
 		}
 	}

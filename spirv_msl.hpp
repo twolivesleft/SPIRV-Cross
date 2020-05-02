@@ -824,6 +824,7 @@ protected:
 
 	VariableID stage_in_var_id = 0;
 	VariableID stage_out_var_id = 0;
+	VariableID stage_uniforms_var_id = 0;
 	VariableID patch_stage_in_var_id = 0;
 	VariableID patch_stage_out_var_id = 0;
 	VariableID stage_in_ptr_var_id = 0;
