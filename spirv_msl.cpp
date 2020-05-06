@@ -8368,7 +8368,7 @@ string CompilerMSL::to_func_call_arg(const SPIRFunction::Parameter &arg, uint32_
 	else
 	{
 		std::string arg_name = CompilerGLSL::to_func_call_arg(arg, id);
-		arg_str += arg.alias_global_variable && processing_entry_point ? ("uniforms." + arg_name) : arg_name;
+		arg_str += arg_name;
 	}
 
 	// Need to check the base variable in case we need to apply a qualified alias.
