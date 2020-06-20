@@ -865,6 +865,10 @@ ShaderResources Compiler::get_shader_resources(const unordered_set<VariableID> *
 		{
 			res.sampled_images.push_back({ var.self, var.basetype, type.self, get_name(var.self) });
 		}
+        else if (type.storage == StorageClassUniformConstant)
+        {
+            res.uniforms.push_back({ var.self, var.basetype, type.self, get_name(var.self) });
+        }
 		// Atomic counters
 		else if (type.storage == StorageClassAtomicCounter)
 		{

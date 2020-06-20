@@ -476,7 +476,10 @@ void CompilerReflection::emit_entry_points()
 
 void CompilerReflection::emit_resources()
 {
-	auto res = get_shader_resources();
+//	auto res = get_shader_resources();
+    auto active = get_active_interface_variables();
+    auto res = get_shader_resources(active);
+
 	emit_resources("subpass_inputs", res.subpass_inputs);
 	emit_resources("inputs", res.stage_inputs);
 	emit_resources("outputs", res.stage_outputs);
@@ -489,6 +492,7 @@ void CompilerReflection::emit_resources()
 	emit_resources("push_constants", res.push_constant_buffers);
 	emit_resources("counters", res.atomic_counters);
 	emit_resources("acceleration_structures", res.acceleration_structures);
+    emit_resources("uniforms", res.uniforms);
 }
 
 void CompilerReflection::emit_resources(const char *tag, const SmallVector<Resource> &resources)
@@ -583,6 +587,20 @@ void CompilerReflection::emit_resources(const char *tag, const SmallVector<Resou
 			const char *fmt = format_to_glsl(type.image.format);
 			if (fmt != nullptr)
 				json_stream->emit_json_key_value("format", std::string(fmt));
+            switch(type.image.access)
+            {
+                case spv::AccessQualifierReadOnly:
+                    json_stream->emit_json_key_value("access", std::string("readonly"));
+                    break;
+                case spv::AccessQualifierWriteOnly:
+                    json_stream->emit_json_key_value("access", std::string("writeonly"));
+                    break;
+                case spv::AccessQualifierReadWrite:
+                    json_stream->emit_json_key_value("access", std::string("readwrite"));
+                    break;
+                case spv::AccessQualifierMax:
+                    break;
+            }
 		}
 		json_stream->end_json_object();
 	}

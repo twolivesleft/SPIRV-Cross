@@ -54,6 +54,7 @@ struct Resource
 
 struct ShaderResources
 {
+    SmallVector<Resource> uniforms;
 	SmallVector<Resource> uniform_buffers;
 	SmallVector<Resource> storage_buffers;
 	SmallVector<Resource> stage_inputs;

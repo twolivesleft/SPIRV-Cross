@@ -2562,7 +2562,7 @@ uint32_t CompilerMSL::add_interface_block(StorageClass storage, bool patch)
 	switch (storage)
 	{
 	case StorageClassUniformConstant:
-		ib_var_ref = "uniforms";
+		ib_var_ref = "_mtl_u";
 		break;
 
 	case StorageClassInput:
@@ -9683,8 +9683,8 @@ void CompilerMSL::entry_point_args_discrete_descriptors(string &ep_args)
 				{
 					if (!ep_args.empty())
 						ep_args += ", ";
-					ep_args += "constant " + to_name(ir.default_entry_point) + "_uniforms& uniforms [[buffer(" +
-					           (get_execution_model() == ExecutionModelFragment ? "0" : "1") + ")]]";
+					ep_args += "constant " + to_name(ir.default_entry_point) + "_mtl_u& _mtl_u [[buffer(" +
+					           (get_execution_model() == ExecutionModelFragment ? "0" : "0") + ")]]";
 					uniform_parameter_emitted = true;
 				}
 			}
