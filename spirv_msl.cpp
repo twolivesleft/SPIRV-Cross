@@ -9199,7 +9199,7 @@ string CompilerMSL::get_type_address_space(const SPIRType &type, uint32_t id, bo
 			else
 				addr_space = "constant";
 		}
-		else if (!argument)
+        else if (!argument || is_array(type))
 		{
 			addr_space = "constant";
 		}
