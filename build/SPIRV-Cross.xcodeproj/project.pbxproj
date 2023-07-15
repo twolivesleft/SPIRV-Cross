@@ -210,7 +210,7 @@
 		9DF97AE2A164436291BEE20A /* spirv_reflect.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = spirv_reflect.hpp; sourceTree = SOURCE_ROOT; };
 		A28F276D1A464F99AEA8F409 /* spirv.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = spirv.h; sourceTree = SOURCE_ROOT; };
 		A32D9A6AECFF4DA298940DF8 /* spirv_common.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = spirv_common.hpp; sourceTree = SOURCE_ROOT; };
-		A32ED562A4064270B6B822E9 /* spirv-cross */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; name = "spirv-cross"; path = "spirv-cross.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A32ED562A4064270B6B822E9 /* spirv-cross.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "spirv-cross.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA4CE397D634B7AB995072B /* spirv_cross_util.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = spirv_cross_util.hpp; sourceTree = SOURCE_ROOT; };
 		AED5DA8708E64713A13720FF /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		AF8B1AA62053461C8941B010 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
@@ -397,7 +397,7 @@
 		36AE7105672F4B1CB845A287 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A32ED562A4064270B6B822E9 /* spirv-cross */,
+				A32ED562A4064270B6B822E9 /* spirv-cross.app */,
 				CD98870516E1499987851022 /* libspirv-cross-c.a */,
 				C7E56D8999934E52997E52D3 /* libspirv-cross-core.a */,
 				7DDD928BFF0B467595B3A407 /* libspirv-cross-cpp.a */,
@@ -820,7 +820,7 @@
 			);
 			name = "spirv-cross";
 			productName = "spirv-cross";
-			productReference = A32ED562A4064270B6B822E9 /* spirv-cross */;
+			productReference = A32ED562A4064270B6B822E9 /* spirv-cross.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BB2F26096A544CC2837611BB /* spirv-cross-msl */ = {
@@ -1075,10 +1075,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1093,6 +1089,7 @@
 				PRODUCT_NAME = "spirv-cross-cpp";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1118,11 +1115,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1136,6 +1128,7 @@
 				PRODUCT_NAME = "spirv-cross-c";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1155,10 +1148,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1173,6 +1162,7 @@
 				PRODUCT_NAME = "spirv-cross-core";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1192,10 +1182,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1210,6 +1196,7 @@
 				PRODUCT_NAME = "spirv-cross-msl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1229,10 +1216,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1247,6 +1230,7 @@
 				PRODUCT_NAME = "spirv-cross-msl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1266,10 +1250,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1284,6 +1264,7 @@
 				PRODUCT_NAME = "spirv-cross-msl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1303,10 +1284,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1321,6 +1298,7 @@
 				PRODUCT_NAME = "spirv-cross-glsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1340,10 +1318,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1358,6 +1332,7 @@
 				PRODUCT_NAME = "spirv-cross-hlsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1377,10 +1352,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1394,6 +1365,7 @@
 				PRODUCT_NAME = "spirv-cross-core";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1413,10 +1385,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1431,6 +1399,7 @@
 				PRODUCT_NAME = "spirv-cross-core";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1450,10 +1419,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1467,6 +1432,7 @@
 				PRODUCT_NAME = "spirv-cross-glsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1486,10 +1452,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1504,6 +1466,7 @@
 				PRODUCT_NAME = "spirv-cross-hlsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1536,10 +1499,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1554,6 +1513,7 @@
 				PRODUCT_NAME = "spirv-cross-util";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1573,10 +1533,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1591,6 +1547,7 @@
 				PRODUCT_NAME = "spirv-cross-cpp";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1610,10 +1567,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1627,6 +1580,7 @@
 				PRODUCT_NAME = "spirv-cross-cpp";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1647,11 +1601,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1678,6 +1627,7 @@
 				PRODUCT_NAME = "spirv-cross";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1697,10 +1647,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1714,6 +1660,7 @@
 				PRODUCT_NAME = "spirv-cross-reflect";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1739,11 +1686,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1758,6 +1700,7 @@
 				PRODUCT_NAME = "spirv-cross-c";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1783,11 +1726,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1802,6 +1740,7 @@
 				PRODUCT_NAME = "spirv-cross-c";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1821,10 +1760,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1839,6 +1774,7 @@
 				PRODUCT_NAME = "spirv-cross-cpp";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1858,10 +1794,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1875,6 +1807,7 @@
 				PRODUCT_NAME = "spirv-cross-hlsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1894,10 +1827,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1912,6 +1841,7 @@
 				PRODUCT_NAME = "spirv-cross-reflect";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1931,10 +1861,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1949,6 +1875,7 @@
 				PRODUCT_NAME = "spirv-cross-glsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -1968,10 +1895,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1986,6 +1909,7 @@
 				PRODUCT_NAME = "spirv-cross-hlsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2011,11 +1935,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2030,6 +1949,7 @@
 				PRODUCT_NAME = "spirv-cross-c";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2049,10 +1969,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2067,6 +1983,7 @@
 				PRODUCT_NAME = "spirv-cross-core";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2086,10 +2003,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2104,6 +2017,7 @@
 				PRODUCT_NAME = "spirv-cross-util";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2124,11 +2038,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2156,6 +2065,7 @@
 				PRODUCT_NAME = "spirv-cross";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2188,10 +2098,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2206,6 +2112,7 @@
 				PRODUCT_NAME = "spirv-cross-reflect";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2226,11 +2133,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2258,6 +2160,7 @@
 				PRODUCT_NAME = "spirv-cross";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2277,10 +2180,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2294,6 +2193,7 @@
 				PRODUCT_NAME = "spirv-cross-util";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2313,10 +2213,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2331,6 +2227,7 @@
 				PRODUCT_NAME = "spirv-cross-reflect";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2363,10 +2260,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2380,6 +2273,7 @@
 				PRODUCT_NAME = "spirv-cross-msl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2399,10 +2293,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2417,6 +2307,7 @@
 				PRODUCT_NAME = "spirv-cross-util";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2450,11 +2341,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
 				INSTALL_PATH = "";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2482,6 +2368,7 @@
 				PRODUCT_NAME = "spirv-cross";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
@@ -2501,10 +2388,6 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -2519,6 +2402,7 @@
 				PRODUCT_NAME = "spirv-cross-glsl";
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build";
+				USER_HEADER_SEARCH_PATHS = "./**";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
 			};
