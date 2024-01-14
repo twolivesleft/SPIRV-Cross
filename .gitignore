@@ -16,5 +16,5 @@
 /external
 .vs/
 *.vcxproj.user
-
+xcuserdata
 !CMakeLists.txt
