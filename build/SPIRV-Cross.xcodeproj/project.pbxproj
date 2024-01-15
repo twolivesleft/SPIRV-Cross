@@ -3,54 +3,8 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 46;
 	objects = {
-
-/* Begin PBXAggregateTarget section */
-		13A193A992E84330AEF24155 /* ALL_BUILD */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7E1781CC960C48758ED56265 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
-			buildPhases = (
-				1D92DE0FD4B6C744B17C6647 /* Generate CMakeFiles/ALL_BUILD */,
-			);
-			dependencies = (
-				D02725B3FA954738B45A9E9E /* PBXTargetDependency */,
-				44EDACB1D00A48038DE3DEE6 /* PBXTargetDependency */,
-				6CB111D2B4EB45EBB27F5155 /* PBXTargetDependency */,
-				4D23013A9A67485292D92F5F /* PBXTargetDependency */,
-				9CF4415EE991498D939CBDDB /* PBXTargetDependency */,
-				F6454E19153E4DAAA0C260C5 /* PBXTargetDependency */,
-				0282D40680B4474B9CD04452 /* PBXTargetDependency */,
-				81D215F4F0CE452CBC5E22D9 /* PBXTargetDependency */,
-				0477DB67DAF3459CBEDDDFC7 /* PBXTargetDependency */,
-				6DEEAC75CB6143499DD568E6 /* PBXTargetDependency */,
-			);
-			name = ALL_BUILD;
-			productName = ALL_BUILD;
-		};
-		BEA663E282EB4D80995516D5 /* ZERO_CHECK */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 1809D4A83F1647FA998D3AF5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
-			buildPhases = (
-				CA02384200C0DAA133BD3CDB /* Generate CMakeFiles/ZERO_CHECK */,
-			);
-			dependencies = (
-			);
-			name = ZERO_CHECK;
-			productName = ZERO_CHECK;
-		};
-		FE38490E7FEF46E081E795CB /* RUN_TESTS */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 6A53ADCC4FFA4E91A87F55FE /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
-			buildPhases = (
-				003C8D08B0008F35F218E126 /* CMake PostBuild Rules */,
-			);
-			dependencies = (
-			);
-			name = RUN_TESTS;
-			productName = RUN_TESTS;
-		};
-/* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
 		19C0B785DDA04FCE89D36398 /* spirv_cfg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0537FF36A99743EE9BEA6582 /* spirv_cfg.cpp */; };
@@ -68,20 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01CF40E185094D3599FC1B33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64BB785C352C4CEE95B073D4;
-			remoteInfo = "spirv-cross-glsl";
-		};
-		0DE093CAE4CB486393353D9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 88E098FD52C34D31B1F6DE7D;
-			remoteInfo = "spirv-cross-c";
-		};
 		1EE9625A1D4F4F468D23D054 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
@@ -110,13 +50,6 @@
 			remoteGlobalIDString = 57E688EAFEFE497B8168F503;
 			remoteInfo = "spirv-cross-hlsl";
 		};
-		374A9F7C58E448419E0153F6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
 		3AFD32776CA8466BB96EDA61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
@@ -130,13 +63,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 64BB785C352C4CEE95B073D4;
 			remoteInfo = "spirv-cross-glsl";
-		};
-		3F5CE1F24F7B44419D848DA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
 		};
 		4A4D776A16B04BAABF4FEF35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -159,13 +85,6 @@
 			remoteGlobalIDString = 894219293D434207BC537CED;
 			remoteInfo = "spirv-cross-reflect";
 		};
-		59E0EEE4378E48809D276BCF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 57E688EAFEFE497B8168F503;
-			remoteInfo = "spirv-cross-hlsl";
-		};
 		5E13E53953314C21A76B6820 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
@@ -173,47 +92,12 @@
 			remoteGlobalIDString = 14975C265AFF4780BFF647EA;
 			remoteInfo = "spirv-cross-msl";
 		};
-		66D6CF6DDBE244B393EFBC60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A5D1598B81E14E5FA3803D11;
-			remoteInfo = "spirv-cross-util";
-		};
 		680A615B895F4E7D80FC8CE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 64BB785C352C4CEE95B073D4;
 			remoteInfo = "spirv-cross-glsl";
-		};
-		6CD851DA7D7849B4A6431651 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
-		74B74AC630724E06AC23846A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
-		7A51D8CECE0A46E29750B725 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF14C5654BD443DB8245F1C;
-			remoteInfo = "spirv-cross-cpp";
-		};
-		7D5F6735311E4851916619A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
 		};
 		801AAC65F2A445D99C705763 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -236,28 +120,7 @@
 			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
 			remoteInfo = "spirv-cross-core";
 		};
-		94AF44CF4EBE40FCAE4EE28E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
-		9801066B57B74F0986059A05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
 		9F7CE237BEB142168D018021 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
-			remoteInfo = "spirv-cross-core";
-		};
-		A32959D0C34343D789B52987 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
 			proxyType = 1;
@@ -278,33 +141,12 @@
 			remoteGlobalIDString = 64BB785C352C4CEE95B073D4;
 			remoteInfo = "spirv-cross-glsl";
 		};
-		B768FB20D7534456B88BB85E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
 		BA62CE2C792948398FEC4F5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
 			remoteInfo = "spirv-cross-core";
-		};
-		BBCEE541F7564660BA414285 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14975C265AFF4780BFF647EA;
-			remoteInfo = "spirv-cross-msl";
-		};
-		BBCF1B619864421292599BA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
 		};
 		C324C21E72A247D19FFF6792 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -313,33 +155,12 @@
 			remoteGlobalIDString = 14975C265AFF4780BFF647EA;
 			remoteInfo = "spirv-cross-msl";
 		};
-		C44F3402787742C2B1D65955 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 894219293D434207BC537CED;
-			remoteInfo = "spirv-cross-reflect";
-		};
 		E2DE04FF77AE416AADC2AEB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 894219293D434207BC537CED;
 			remoteInfo = "spirv-cross-reflect";
-		};
-		E472C212B3474794BACEA7CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEA663E282EB4D80995516D5;
-			remoteInfo = ZERO_CHECK;
-		};
-		F16FB7676A574B8DAB60E428 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BAC646D5ACB4481BA11459BD;
-			remoteInfo = "spirv-cross";
 		};
 		F48967AE94B8452281AEEF70 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -867,7 +688,6 @@
 			dependencies = (
 				C81EC5A7D2464B509931B34A /* PBXTargetDependency */,
 				4F41E40CE5D04FDDB2B92065 /* PBXTargetDependency */,
-				88B86635778248D185F46AB5 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-msl";
 			productName = "spirv-cross-msl";
@@ -884,7 +704,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				41662E956C344D199E9A924C /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-core";
 			productName = "spirv-cross-core";
@@ -903,7 +722,6 @@
 			dependencies = (
 				91A506A7BED74459B5A12FD7 /* PBXTargetDependency */,
 				E517B4C35F0B45D09519B867 /* PBXTargetDependency */,
-				1988B4512248498398503418 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-hlsl";
 			productName = "spirv-cross-hlsl";
@@ -921,7 +739,6 @@
 			);
 			dependencies = (
 				CB30FD69B80E4924AA3B04AE /* PBXTargetDependency */,
-				D34C192C5B404DD0A5D1F030 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-glsl";
 			productName = "spirv-cross-glsl";
@@ -940,7 +757,6 @@
 			dependencies = (
 				B962F39EC0F54724AD67C424 /* PBXTargetDependency */,
 				5A6A109DE3144E33B989D889 /* PBXTargetDependency */,
-				96144C1D7AAF44B282EA5202 /* PBXTargetDependency */,
 				6DEA04D00712431DB5B3501B /* PBXTargetDependency */,
 				6A8DEED8E59447D48285BB96 /* PBXTargetDependency */,
 				93FE9682B1EF4BF99A9BF36C /* PBXTargetDependency */,
@@ -961,7 +777,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				04EB4345E341495F89CC8CE1 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-reflect";
 			productName = "spirv-cross-reflect";
@@ -979,7 +794,6 @@
 			);
 			dependencies = (
 				5E282BE475D1462DA9364A01 /* PBXTargetDependency */,
-				6ACDFAE6410C49F68B74F523 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-util";
 			productName = "spirv-cross-util";
@@ -999,7 +813,6 @@
 				7082A695490646138CD46B29 /* PBXTargetDependency */,
 				C650E5AA2F3E423BBD01E7BF /* PBXTargetDependency */,
 				6A5110F908384EE3AEF8AD70 /* PBXTargetDependency */,
-				4E19034E57BE4F08A3A27404 /* PBXTargetDependency */,
 				C395C418C6B448D482F94D9B /* PBXTargetDependency */,
 				E9BFECC668914FBE87F09D4C /* PBXTargetDependency */,
 				B5DE4AA481104F77A3E64EC6 /* PBXTargetDependency */,
@@ -1022,7 +835,6 @@
 			dependencies = (
 				C948EEBDB8DB4B089B3CB13A /* PBXTargetDependency */,
 				FD3A9305E9EA4973B5FFA9BD /* PBXTargetDependency */,
-				3469E9F0DC364340B2808719 /* PBXTargetDependency */,
 			);
 			name = "spirv-cross-cpp";
 			productName = "spirv-cross-cpp";
@@ -1049,9 +861,6 @@
 			projectDirPath = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross";
 			projectRoot = "";
 			targets = (
-				13A193A992E84330AEF24155 /* ALL_BUILD */,
-				FE38490E7FEF46E081E795CB /* RUN_TESTS */,
-				BEA663E282EB4D80995516D5 /* ZERO_CHECK */,
 				BAC646D5ACB4481BA11459BD /* spirv-cross */,
 				88E098FD52C34D31B1F6DE7D /* spirv-cross-c */,
 				3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */,
@@ -1064,57 +873,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		003C8D08B0008F35F218E126 /* CMake PostBuild Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake PostBuild Rules";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  /opt/homebrew/Cellar/cmake/3.25.2/bin/ctest --force-new-ctest-process -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  /opt/homebrew/Cellar/cmake/3.25.2/bin/ctest --force-new-ctest-process -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  /opt/homebrew/Cellar/cmake/3.25.2/bin/ctest --force-new-ctest-process -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  /opt/homebrew/Cellar/cmake/3.25.2/bin/ctest --force-new-ctest-process -C $CONFIGURATION$EFFECTIVE_PLATFORM_NAME\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		1D92DE0FD4B6C744B17C6647 /* Generate CMakeFiles/ALL_BUILD */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate CMakeFiles/ALL_BUILD";
-			outputPaths = (
-				"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/ALL_BUILD",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  echo Build\\ all\\ projects\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  echo Build\\ all\\ projects\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CA02384200C0DAA133BD3CDB /* Generate CMakeFiles/ZERO_CHECK */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate CMakeFiles/ZERO_CHECK";
-			outputPaths = (
-				"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/ZERO_CHECK",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nif test \"$CONFIGURATION\" = \"Debug\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  make -f /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"Release\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  make -f /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"MinSizeRel\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  make -f /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeScripts/ReRunCMake.make\nfi\nif test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :\n  cd /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build\n  make -f /Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeScripts/ReRunCMake.make\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		212D559D28884ACC89CB0576 /* Sources */ = {
@@ -1195,51 +953,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0282D40680B4474B9CD04452 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */;
-			targetProxy = 7A51D8CECE0A46E29750B725 /* PBXContainerItemProxy */;
-		};
-		0477DB67DAF3459CBEDDDFC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 14975C265AFF4780BFF647EA /* spirv-cross-msl */;
-			targetProxy = BBCEE541F7564660BA414285 /* PBXContainerItemProxy */;
-		};
-		04EB4345E341495F89CC8CE1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 74B74AC630724E06AC23846A /* PBXContainerItemProxy */;
-		};
-		1988B4512248498398503418 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = E472C212B3474794BACEA7CF /* PBXContainerItemProxy */;
-		};
-		3469E9F0DC364340B2808719 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 9801066B57B74F0986059A05 /* PBXContainerItemProxy */;
-		};
-		41662E956C344D199E9A924C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 374A9F7C58E448419E0153F6 /* PBXContainerItemProxy */;
-		};
-		44EDACB1D00A48038DE3DEE6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
-			targetProxy = 01CF40E185094D3599FC1B33 /* PBXContainerItemProxy */;
-		};
-		4D23013A9A67485292D92F5F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 88E098FD52C34D31B1F6DE7D /* spirv-cross-c */;
-			targetProxy = 0DE093CAE4CB486393353D9B /* PBXContainerItemProxy */;
-		};
-		4E19034E57BE4F08A3A27404 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = B768FB20D7534456B88BB85E /* PBXContainerItemProxy */;
-		};
 		4F41E40CE5D04FDDB2B92065 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
@@ -1265,40 +978,15 @@
 			target = 894219293D434207BC537CED /* spirv-cross-reflect */;
 			targetProxy = E2DE04FF77AE416AADC2AEB4 /* PBXContainerItemProxy */;
 		};
-		6ACDFAE6410C49F68B74F523 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 3F5CE1F24F7B44419D848DA9 /* PBXContainerItemProxy */;
-		};
-		6CB111D2B4EB45EBB27F5155 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A5D1598B81E14E5FA3803D11 /* spirv-cross-util */;
-			targetProxy = 66D6CF6DDBE244B393EFBC60 /* PBXContainerItemProxy */;
-		};
 		6DEA04D00712431DB5B3501B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */;
 			targetProxy = 29BE01CC115644B4A4986F4A /* PBXContainerItemProxy */;
 		};
-		6DEEAC75CB6143499DD568E6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 57E688EAFEFE497B8168F503 /* spirv-cross-hlsl */;
-			targetProxy = 59E0EEE4378E48809D276BCF /* PBXContainerItemProxy */;
-		};
 		7082A695490646138CD46B29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
 			targetProxy = 3AFD32776CA8466BB96EDA61 /* PBXContainerItemProxy */;
-		};
-		81D215F4F0CE452CBC5E22D9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 894219293D434207BC537CED /* spirv-cross-reflect */;
-			targetProxy = C44F3402787742C2B1D65955 /* PBXContainerItemProxy */;
-		};
-		88B86635778248D185F46AB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 94AF44CF4EBE40FCAE4EE28E /* PBXContainerItemProxy */;
 		};
 		91A506A7BED74459B5A12FD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1314,16 +1002,6 @@
 			isa = PBXTargetDependency;
 			target = 57E688EAFEFE497B8168F503 /* spirv-cross-hlsl */;
 			targetProxy = 1EE9625A1D4F4F468D23D054 /* PBXContainerItemProxy */;
-		};
-		96144C1D7AAF44B282EA5202 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 6CD851DA7D7849B4A6431651 /* PBXContainerItemProxy */;
-		};
-		9CF4415EE991498D939CBDDB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BAC646D5ACB4481BA11459BD /* spirv-cross */;
-			targetProxy = F16FB7676A574B8DAB60E428 /* PBXContainerItemProxy */;
 		};
 		B5DE4AA481104F77A3E64EC6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1365,16 +1043,6 @@
 			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
 			targetProxy = 4A4D776A16B04BAABF4FEF35 /* PBXContainerItemProxy */;
 		};
-		D02725B3FA954738B45A9E9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
-			targetProxy = A32959D0C34343D789B52987 /* PBXContainerItemProxy */;
-		};
-		D34C192C5B404DD0A5D1F030 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = 7D5F6735311E4851916619A2 /* PBXContainerItemProxy */;
-		};
 		E517B4C35F0B45D09519B867 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
@@ -1385,11 +1053,6 @@
 			target = 894219293D434207BC537CED /* spirv-cross-reflect */;
 			targetProxy = 53004DAB52A941E6ACE0660C /* PBXContainerItemProxy */;
 		};
-		F6454E19153E4DAAA0C260C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BEA663E282EB4D80995516D5 /* ZERO_CHECK */;
-			targetProxy = BBCF1B619864421292599BA4 /* PBXContainerItemProxy */;
-		};
 		FD3A9305E9EA4973B5FFA9BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
@@ -1398,28 +1061,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		00A790052C254B3ABDECF7AA /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = RelWithDebInfo;
-		};
 		034E65A63E2B4138A67BDACB /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1571,28 +1212,6 @@
 			};
 			name = RelWithDebInfo;
 		};
-		154884D5F773439781EC7CFD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Debug;
-		};
 		1619C6CD6915434BAD6C1BFB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1736,28 +1355,6 @@
 			};
 			name = Debug;
 		};
-		307D8C488BAB4C2F85DAAA35 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = MinSizeRel;
-		};
 		356BB595B492465BA70D75D3 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1788,28 +1385,6 @@
 				OTHER_LIBTOOLFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "spirv-cross-cpp";
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = RelWithDebInfo;
-		};
-		3860612559BE4C29AD8181B2 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = "$(inherited)";
@@ -1956,28 +1531,6 @@
 				WARNING_CFLAGS = "$(inherited)";
 			};
 			name = Debug;
-		};
-		5A01332F87C44B3ABA02B3A9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Release;
 		};
 		6439E0FBD3E24654BC6B0DFC /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
@@ -2224,28 +1777,6 @@
 			};
 			name = MinSizeRel;
 		};
-		87BA0D07C3594867AD2FE7B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Debug;
-		};
 		88152CFD232F4F56A1606BBD /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2317,94 +1848,6 @@
 				WARNING_CFLAGS = "$(inherited)";
 			};
 			name = Release;
-		};
-		8E09905499B1484FA0DA9E0F /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = RelWithDebInfo;
-		};
-		929A287FF7F842F8BD89765F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Release;
-		};
-		97316253359F4E69949A41A1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Release;
-		};
-		9DAA5D8A5A744BC7868AD526 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = MinSizeRel;
 		};
 		9EE42EA8242640F482712F87 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
@@ -2513,28 +1956,6 @@
 				WARNING_CFLAGS = "$(inherited)";
 			};
 			name = Debug;
-		};
-		B12DFF88B1A941E2971D92CC /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = MinSizeRel;
 		};
 		B2E25951E73340F2B3CEF68F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2807,28 +2228,6 @@
 				WARNING_CFLAGS = "$(inherited)";
 			};
 			name = MinSizeRel;
-		};
-		DC86049DE9D74B90B73DF137 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " $(inherited)";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Debug;
 		};
 		DD27FBB910B644369BBDC8E7 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
@@ -3124,17 +2523,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		1809D4A83F1647FA998D3AF5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				154884D5F773439781EC7CFD /* Debug */,
-				5A01332F87C44B3ABA02B3A9 /* Release */,
-				B12DFF88B1A941E2971D92CC /* MinSizeRel */,
-				3860612559BE4C29AD8181B2 /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		37AA44FF556B4D66A9DA21DD /* Build configuration list for PBXNativeTarget "spirv-cross-util" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3157,17 +2545,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		6A53ADCC4FFA4E91A87F55FE /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				87BA0D07C3594867AD2FE7B6 /* Debug */,
-				929A287FF7F842F8BD89765F /* Release */,
-				307D8C488BAB4C2F85DAAA35 /* MinSizeRel */,
-				8E09905499B1484FA0DA9E0F /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		780BBA3675944FFCBC0AAC4B /* Build configuration list for PBXNativeTarget "spirv-cross-reflect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3175,17 +2552,6 @@
 				1619C6CD6915434BAD6C1BFB /* Release */,
 				6439E0FBD3E24654BC6B0DFC /* MinSizeRel */,
 				DD27FBB910B644369BBDC8E7 /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		7E1781CC960C48758ED56265 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DC86049DE9D74B90B73DF137 /* Debug */,
-				97316253359F4E69949A41A1 /* Release */,
-				9DAA5D8A5A744BC7868AD526 /* MinSizeRel */,
-				00A790052C254B3ABDECF7AA /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
