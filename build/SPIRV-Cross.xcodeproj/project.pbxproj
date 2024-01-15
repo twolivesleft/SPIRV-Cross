@@ -776,7 +776,7 @@
 				Base,
 			);
 			mainGroup = B4FF45B42F984A62A49F6504;
-			projectDirPath = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross";
+			projectDirPath = ../;
 			projectRoot = "";
 			targets = (
 				88E098FD52C34D31B1F6DE7D /* spirv-cross-c */,
