@@ -15,27 +15,12 @@
 		8D385233411C4520922A1FC9 /* spirv_cross_parsed_ir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 089AA7964A37479989A51691 /* spirv_cross_parsed_ir.cpp */; };
 		924C0A3E584748209E093431 /* spirv_cross_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A882611E00224DA09F4F31B1 /* spirv_cross_c.cpp */; };
 		9CDB30830666481A9A28E504 /* spirv_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9D323943E6644B18A9F74EB /* spirv_cpp.cpp */; };
-		9E42E16CF71E495488E42DA7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8731C32DE67468FAC20385D /* main.cpp */; };
 		AB83F42A7037499981CCA032 /* spirv_cross_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838293BEA0E2414E8843F476 /* spirv_cross_util.cpp */; };
 		BA73B2725C8B4289BEB1620F /* spirv_hlsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A634FDD194B42658914A1D4 /* spirv_hlsl.cpp */; };
 		C0D4060B03CB4469BD166BE2 /* spirv_reflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 37067C32B8304D0BA61D0B88 /* spirv_reflect.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1EE9625A1D4F4F468D23D054 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 57E688EAFEFE497B8168F503;
-			remoteInfo = "spirv-cross-hlsl";
-		};
-		20E16A6772CF493B9C9C57C8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A5D1598B81E14E5FA3803D11;
-			remoteInfo = "spirv-cross-util";
-		};
 		29BE01CC115644B4A4986F4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
@@ -50,13 +35,6 @@
 			remoteGlobalIDString = 57E688EAFEFE497B8168F503;
 			remoteInfo = "spirv-cross-hlsl";
 		};
-		3AFD32776CA8466BB96EDA61 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
-			remoteInfo = "spirv-cross-core";
-		};
 		3D767462064243C8A0BE40F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
@@ -70,27 +48,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
 			remoteInfo = "spirv-cross-core";
-		};
-		5143D10AD0E14556A90A8B80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64BB785C352C4CEE95B073D4;
-			remoteInfo = "spirv-cross-glsl";
-		};
-		53004DAB52A941E6ACE0660C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 894219293D434207BC537CED;
-			remoteInfo = "spirv-cross-reflect";
-		};
-		5E13E53953314C21A76B6820 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14975C265AFF4780BFF647EA;
-			remoteInfo = "spirv-cross-msl";
 		};
 		680A615B895F4E7D80FC8CE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -126,13 +83,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3D5954C97CF64F2F8B1146F2;
 			remoteInfo = "spirv-cross-core";
-		};
-		AA12720CD7DA49F48D5796DC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C60F4C062C89461EA779A6C4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF14C5654BD443DB8245F1C;
-			remoteInfo = "spirv-cross-cpp";
 		};
 		B6E97C64074C40A1BC31BA47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -225,7 +175,6 @@
 		DAF0160FE1054A24818D5391 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist; name = Info.plist; path = "build/CMakeFiles/spirv-cross-util.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
 		DC09100F0799488F9D16A764 /* libspirv-cross-glsl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libspirv-cross-glsl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E604019E797D4DC0BD6CD112 /* spirv_common.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = spirv_common.hpp; sourceTree = SOURCE_ROOT; };
-		E9ED7781964F4C45A4542E96 /* spirv-cross */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; name = "spirv-cross"; path = "spirv-cross.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95AE06639724EB3A497AD30 /* libspirv-cross-cpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libspirv-cross-cpp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9DA7C1AEB424AD48870E0E3 /* libspirv-cross-util.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libspirv-cross-util.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0E5D3871C84B0188F8DBB6 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist; name = Info.plist; path = "build/CMakeFiles/spirv-cross-cpp.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -240,13 +189,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		367CC05C56C84DF28179EDA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		71E433829166421382A1469F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -418,7 +360,6 @@
 		5E499E06FE724D6DA8AEBF2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9ED7781964F4C45A4542E96 /* spirv-cross */,
 				20EC8A4CC1CD401A946C71BA /* libspirv-cross-c.a */,
 				BE4794F025B944BB80AEF96F /* libspirv-cross-core.a */,
 				F95AE06639724EB3A497AD30 /* libspirv-cross-cpp.a */,
@@ -800,29 +741,6 @@
 			productReference = F9DA7C1AEB424AD48870E0E3 /* libspirv-cross-util.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		BAC646D5ACB4481BA11459BD /* spirv-cross */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F89C27042ADB458FBC16FD75 /* Build configuration list for PBXNativeTarget "spirv-cross" */;
-			buildPhases = (
-				3361E9E5815B4572AF674F56 /* Sources */,
-				71E433829166421382A1469F /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7082A695490646138CD46B29 /* PBXTargetDependency */,
-				C650E5AA2F3E423BBD01E7BF /* PBXTargetDependency */,
-				6A5110F908384EE3AEF8AD70 /* PBXTargetDependency */,
-				C395C418C6B448D482F94D9B /* PBXTargetDependency */,
-				E9BFECC668914FBE87F09D4C /* PBXTargetDependency */,
-				B5DE4AA481104F77A3E64EC6 /* PBXTargetDependency */,
-				95F223C2FA264CDE8C18B5F0 /* PBXTargetDependency */,
-			);
-			name = "spirv-cross";
-			productName = "spirv-cross";
-			productReference = E9ED7781964F4C45A4542E96 /* spirv-cross */;
-			productType = "com.apple.product-type.application";
-		};
 		EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA96F6DC3114C2DA66FF6BA /* Build configuration list for PBXNativeTarget "spirv-cross-cpp" */;
@@ -861,7 +779,6 @@
 			projectDirPath = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross";
 			projectRoot = "";
 			targets = (
-				BAC646D5ACB4481BA11459BD /* spirv-cross */,
 				88E098FD52C34D31B1F6DE7D /* spirv-cross-c */,
 				3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */,
 				EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */,
@@ -880,14 +797,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA73B2725C8B4289BEB1620F /* spirv_hlsl.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3361E9E5815B4572AF674F56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E42E16CF71E495488E42DA7 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,11 +877,6 @@
 			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
 			targetProxy = BA62CE2C792948398FEC4F5C /* PBXContainerItemProxy */;
 		};
-		6A5110F908384EE3AEF8AD70 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A5D1598B81E14E5FA3803D11 /* spirv-cross-util */;
-			targetProxy = 20E16A6772CF493B9C9C57C8 /* PBXContainerItemProxy */;
-		};
 		6A8DEED8E59447D48285BB96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 894219293D434207BC537CED /* spirv-cross-reflect */;
@@ -982,11 +886,6 @@
 			isa = PBXTargetDependency;
 			target = EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */;
 			targetProxy = 29BE01CC115644B4A4986F4A /* PBXContainerItemProxy */;
-		};
-		7082A695490646138CD46B29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
-			targetProxy = 3AFD32776CA8466BB96EDA61 /* PBXContainerItemProxy */;
 		};
 		91A506A7BED74459B5A12FD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -998,35 +897,15 @@
 			target = 14975C265AFF4780BFF647EA /* spirv-cross-msl */;
 			targetProxy = C324C21E72A247D19FFF6792 /* PBXContainerItemProxy */;
 		};
-		95F223C2FA264CDE8C18B5F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 57E688EAFEFE497B8168F503 /* spirv-cross-hlsl */;
-			targetProxy = 1EE9625A1D4F4F468D23D054 /* PBXContainerItemProxy */;
-		};
-		B5DE4AA481104F77A3E64EC6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 14975C265AFF4780BFF647EA /* spirv-cross-msl */;
-			targetProxy = 5E13E53953314C21A76B6820 /* PBXContainerItemProxy */;
-		};
 		B962F39EC0F54724AD67C424 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3D5954C97CF64F2F8B1146F2 /* spirv-cross-core */;
 			targetProxy = 9F7CE237BEB142168D018021 /* PBXContainerItemProxy */;
 		};
-		C395C418C6B448D482F94D9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF14C5654BD443DB8245F1C /* spirv-cross-cpp */;
-			targetProxy = AA12720CD7DA49F48D5796DC /* PBXContainerItemProxy */;
-		};
 		C407D43B9EC649D990841B4E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 57E688EAFEFE497B8168F503 /* spirv-cross-hlsl */;
 			targetProxy = 3677631841E24B9FB64AB4EB /* PBXContainerItemProxy */;
-		};
-		C650E5AA2F3E423BBD01E7BF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
-			targetProxy = 5143D10AD0E14556A90A8B80 /* PBXContainerItemProxy */;
 		};
 		C81EC5A7D2464B509931B34A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1047,11 +926,6 @@
 			isa = PBXTargetDependency;
 			target = 64BB785C352C4CEE95B073D4 /* spirv-cross-glsl */;
 			targetProxy = 895D9BFD96174A52A04F015F /* PBXContainerItemProxy */;
-		};
-		E9BFECC668914FBE87F09D4C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 894219293D434207BC537CED /* spirv-cross-reflect */;
-			targetProxy = 53004DAB52A941E6ACE0660C /* PBXContainerItemProxy */;
 		};
 		FD3A9305E9EA4973B5FFA9BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1427,111 +1301,6 @@
 			};
 			name = MinSizeRel;
 		};
-		471DBE9066034AEC9675454D /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					HAVE_SPIRV_CROSS_GIT_VERSION,
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"-Wall",
-					"-Wextra",
-					"-Wshadow",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-hlsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-cpp.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-reflect.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-msl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-util.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/MinSizeRel${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"$(inherited)",
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "spirv-cross";
-				SECTORDER_FLAGS = "";
-				TARGET_TEMP_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/build/spirv-cross.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = MinSizeRel;
-		};
-		59C86C3630F4417591BDFA1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					HAVE_SPIRV_CROSS_GIT_VERSION,
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-Wall",
-					"-Wextra",
-					"-Wshadow",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-hlsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-cpp.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-reflect.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-msl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-util.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Debug${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"$(inherited)",
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "spirv-cross";
-				SECTORDER_FLAGS = "";
-				TARGET_TEMP_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/build/spirv-cross.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Debug;
-		};
 		6439E0FBD3E24654BC6B0DFC /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1602,59 +1371,6 @@
 				WARNING_CFLAGS = "$(inherited)";
 			};
 			name = Debug;
-		};
-		6B60D5F12BDC4BDB97AFF207 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					HAVE_SPIRV_CROSS_GIT_VERSION,
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"-Wall",
-					"-Wextra",
-					"-Wshadow",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-hlsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-cpp.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-reflect.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-msl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-util.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/Release${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"$(inherited)",
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "spirv-cross";
-				SECTORDER_FLAGS = "";
-				TARGET_TEMP_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/build/spirv-cross.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
-			};
-			name = Release;
 		};
 		6CEC87ECE76049FE9182A2B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1859,59 +1575,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-			};
-			name = RelWithDebInfo;
-		};
-		A490CC7F23FA4F61BF0B6234 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
-					HAVE_SPIRV_CROSS_GIT_VERSION,
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/CMakeFiles/spirv-cross.dir/Info.plist";
-				INSTALL_PATH = "";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNDEBUG",
-					"-Wall",
-					"-Wextra",
-					"-Wshadow",
-					"'-std=gnu++11'",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-search_paths_first",
-					"-Wl,-headerpad_max_install_names",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-hlsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-cpp.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-reflect.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-msl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-util.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-glsl.a",
-					"/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/RelWithDebInfo${EFFECTIVE_PLATFORM_NAME}/libspirv-cross-core.a",
-					"$(inherited)",
-				);
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "spirv-cross";
-				SECTORDER_FLAGS = "";
-				TARGET_TEMP_DIR = "/Users/sim/Developer/Codea/Carbide/CarbideKit/Libraries/ShaderCross/ShaderCross/Libraries/SPIRV-Cross/build/build/spirv-cross.build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = "$(inherited)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos xros xrsimulator";
 			};
 			name = RelWithDebInfo;
 		};
@@ -2311,6 +1975,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos xros xrsimulator";
 			};
 			name = MinSizeRel;
 		};
@@ -2596,17 +2261,6 @@
 				75381E74B6194A609D6F807F /* Release */,
 				3E1E0435B1F14658ACF6F9F9 /* MinSizeRel */,
 				356BB595B492465BA70D75D3 /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		F89C27042ADB458FBC16FD75 /* Build configuration list for PBXNativeTarget "spirv-cross" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				59C86C3630F4417591BDFA1F /* Debug */,
-				6B60D5F12BDC4BDB97AFF207 /* Release */,
-				471DBE9066034AEC9675454D /* MinSizeRel */,
-				A490CC7F23FA4F61BF0B6234 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
